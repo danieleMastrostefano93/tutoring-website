@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2>Contattami</h2>
+  <form>
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email">
+    </div>
+    <div class="mb-3">
+      <label for="messaggio" class="form-label">Messaggio</label>
+      <textarea class="form-control" id="messaggio"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Invia</button>
+  </form>
+
+  <h3 class="mt-5">Prenota una lezione</h3>
+  <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=Europe%2FRome" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+  <h3 class="mt-5">Pagamento con PayPal</h3>
+  <form action="https://www.paypal.com/donate" method="post" target="_blank">
+    <input type="hidden" name="business" value="your_paypal_email@example.com">
+    <input type="hidden" name="currency_code" value="EUR">
+    <input type="submit" value="Paga con PayPal" class="btn btn-success">
+  </form>
+</div>

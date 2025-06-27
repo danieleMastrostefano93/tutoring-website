@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&family=Rock+Salt&display=swap");
+
+.welcome-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 0px;
+  padding: 5rem;
+  background-color: #333;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 3s ease-in forwards;
+}
+
+.welcome-text-bold {
+  font-size: clamp(1rem, 8vw, 8rem);
+  font-weight: bold;
+}
+
+.welcome-text {
+  font-size: clamp(0.5rem, 1.5vw, 2rem);
+}
+
+/* Per dispositivi mobili */
+@media (max-width: 768px) {
+  .welcome-section {
+    background-attachment: scroll; /* migliora performance su mobile */
+    background-position: center;
+  }
+}
+
+.welcome-text-custom {
+  font-family: "Rock Salt", cursive;
+  color: #f2f2f2; /* Bianco sporco */
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.container {
+  margin-top: 100vh; /* sposta il resto del contenuto sotto la sezione di benvenuto */
+}
+
+.btn-primary {
+  background-color: #c3ac00;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: 2px solid #333; /* spessore, stile, colore */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #e8d655;
+}
+
+.grid-presentation {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
+  text-decoration: underline; /* sottolineatura */
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 3rem;
+  background: linear-gradient(to right, #a95252, #6faccc);
+  text-align: center;
+}
+
+.media-item {
+  background: #fff;
+  position: relative;
+  display: inline;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Fa sì che l'immagine non esca dai bordi */
+}
+
+.media-heading {
+  position: absolute;
+  top: 30%; /* distanza dal bordo superiore */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem;
+  color: #f2f2f2;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  z-index: 2;
+}
+
+.media-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-item p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.personal-presentation {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: clamp(0rem, 4vw, 4rem);
+  text-align: center;
+  margin-top: 5rem;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
+  text-decoration: underline; /* sottolineatura */
+}
+
+.personal-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 0rem;
+  padding: 5rem;
+  background-color: #f2f2f2;
+}
+
+.personal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0rem;
+  max-width: 1000px; /* personalizzabile */
+  width: 100%;
+  position: relative;
+  margin: 0 auto; /* dice al browser di impostare margini automatici a sinistra e destra, centrando il contenitore orizzontalmente all’interno del suo genitore. */
+}
+
+.personal-column {
+  flex: 1;
+  position: relative;
+}
+
+.photo-column img {
+  width: 500px;
+  height: 700px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  margin-top: -30px; /* sovrapposizione */
+}
+
+.text-column {
+  background-color: #ffffff;
+  padding: 2rem;
+  padding-left: 5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  margin-left: -60px; /* sovrapposizione sotto la foto */
+  margin-top: 40px;
+}
+
+.text-column p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Sezione personale responsive tablet */
+@media (max-width: 1024px) {
+  .personal-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .photo-column img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0;
+  }
+
+  .text-column {
+    margin: 0;
+    padding: 2rem;
+    width: 100%;
+  }
+}
+
+/* Sezione personale responsive mobile */
+@media (max-width: 768px) {
+  .personal-section {
+    padding: 2rem;
+  }
+
+  .personal-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .photo-column img {
+    width: 90%;
+    height: auto;
+    margin: 0;
+  }
+
+  .text-column {
+    margin: 0;
+    padding: 2rem;
+    width: 90%;
+  }
+}
+
+.contact-title-section {
+  padding: 1rem;
+}
+
+.contact-title {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1);
+  text-decoration: underline;
+}
+
+.contact-subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+  background-color: #f2f2f2;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.education-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.education-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: left;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+  align-items: center;
+}
+
+.education-grid label {
+  display: contents;
+}
+
+.education-grid input[type="radio"] {
+  justify-self: start;
+}
+
+.education-grid span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #333;
+  color: #f2f2f2;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}

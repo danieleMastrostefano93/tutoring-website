@@ -1,0 +1,79 @@
+.bg-seppia-custom {
+  background-color: #f4e1c1;
+  color: #5a3e1b;
+}
+
+body {
+  background-color: #f2f2f2; /* Bianco sporco */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  padding-top: 56px; /* altezza della navbar */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #5a3e1b;
+}
+
+.nav-link {
+  margin-left: 1rem;
+  font-weight: 500;
+  color: #5a3e1b !important;
+}
+
+.nav-link:hover {
+  background-color: rgba(138, 94, 60, 0.1); /* leggero highlight */
+  color: #8b5e3c !important; /* colore in evidenza */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+  color: #8b5e3c !important;
+  font-weight: bold;
+}
+
+/* Sidebar mobile */
+.sidebar {
+  position: fixed;
+  top: 56px;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #383333;
+  transition: left 0.3s ease;
+  z-index: 1050;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar .nav-link {
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 576px) {
+  .header-content h5 {
+    font-size: 1.2rem;
+  }
+
+  .header-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

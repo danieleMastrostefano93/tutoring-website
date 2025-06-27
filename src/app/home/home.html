@@ -1,0 +1,160 @@
+<!-- Contenuto Home centrato sotto la navbar -->
+<div class="welcome-section">
+  <div class="welcome-text-custom fade-in">
+    <div class="welcome-text-section">
+      <h5 class="welcome-text-bold">Benvenuto su TutorOnline</h5>
+    </div>
+    <h6 class="welcome-text">La tua piattaforma di lezioni private online</h6>
+  </div>
+</div>
+<h2 class="grid-presentation">La nostra offerta formativa:</h2>
+<div class="media-grid">
+  <div class="media-item">
+    <div class="media-heading">Materiale lezioni</div>
+    <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 1" />
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <div class="mt-4">
+      <a
+        routerLink="/info"
+        routerLinkActive="active"
+        class="btn btn-primary btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+  <div class="media-item">
+    <div class="media-heading">Prezzi lezioni</div>
+    <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 2" />
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <div class="mt-4">
+      <a
+        routerLink="/info"
+        routerLinkActive="active"
+        class="btn btn-primary btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+  <div class="media-item">
+    <div class="media-heading">Prenota appuntamento</div>
+    <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 3" />
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <div class="mt-4">
+      <a
+        routerLink="/info"
+        routerLinkActive="active"
+        class="btn btn-primary btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+</div>
+<h2 class="personal-presentation">Su di me:</h2>
+<div class="personal-section">
+  <div class="personal-container">
+    <div class="personal-column photo-column">
+      <img src="../../assets/profile-picture-test.jpeg" alt="La mia foto" />
+    </div>
+    <div class="personal-column text-column">
+      <p>
+        Ciao! Mi chiamo Daniele Mastrostefano, appassionato di didattica e
+        tecnologia. Offro supporto personalizzato per aiutarti a raggiungere i
+        tuoi obiettivi di apprendimento in modo efficace e coinvolgente. Il mio
+        obiettivo è farti acquisire attraverso un percorso mirato e
+        personalizzato le competenze necessarie per farti superare ogni
+        ostacolo. Insieme analizzeremo il tuo percorso scolastico o accademico
+        fino ad ora, valuteremo la tua preparazione attuale e stabiliremo i tuoi
+        prossimi obiettivi per improntare un piano di studio e lavoro volto a
+        colmare eventuali gap, approfondire determinate tematiche o superare
+        qualche scoglio. Dopo 3 titoli accademici ed un'esperienza di più di 15
+        anni di lavoro con i ragazzi di ogni età ed indirizzo scolastico, credo
+        di essere la persona adatta a te ;) <br />
+        Clissa su bottone qui sotto per sapere qualcosa in più su di me.
+      </p>
+      <div class="mt-4">
+        <a
+          routerLink="/info"
+          routerLinkActive="active"
+          class="btn btn-primary btn-lg"
+          >Scopri di più</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contact-title-section">
+  <h2 class="contact-title">Contattami:</h2>
+  <h3 class="contact-subtitle">
+    Vuoi avere info in più sul nostro servizio o entrare in contatto con me?<br />
+    Inviami un messaggio compilando la form qui sotto:
+  </h3>
+</div>
+<div class="contact-section">
+  <form class="contact-form">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="surname">Cognome:</label>
+    <input type="text" id="surname" name="surname" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="phone">Numero di Telefono:</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <fieldset class="education-section">
+      <legend class="education-title">Titolo di Studio:</legend>
+      <div class="education-grid">
+        <label
+          ><input type="radio" name="education" value="elementari" /><span
+            >Scuole Elementari</span
+          ></label
+        >
+        <label
+          ><input type="radio" name="education" value="medie" /><span
+            >Scuole Medie</span
+          ></label
+        >
+        <label
+          ><input type="radio" name="education" value="superiori" /><span
+            >Superiori o Liceo</span
+          ></label
+        >
+        <label
+          ><input type="radio" name="education" value="universita" /><span
+            >Università</span
+          ></label
+        >
+        <label
+          ><input type="radio" name="education" value="altro" /><span
+            >Altro</span
+          ></label
+        >
+      </div>
+    </fieldset>
+
+    <label for="message">Messaggio:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+  </form>
+</div>
+
+<footer class="site-footer">
+  <p>
+    Sito web realizzato e gestito da Daniele Mastrostefano - Tutti i diritti
+    sono riservati all'autore &copy; 2025
+  </p>
+</footer>
+
+<router-outlet></router-outlet>
