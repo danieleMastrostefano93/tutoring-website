@@ -3,8 +3,8 @@
 .welcome-section {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* justify-content: center: Aligns items along the main axis (horizontal by default), centers items horizontally in a flex container (if flex-direction: row, otherwise does opposite) used with display:flex) */
+  align-items: center; /* align-items: center: Aligns items along the cross axis (vertical by default), centers items vertically in a flex container (if flex-direction: row, otherwise does opposite) used with display:flex) */
   flex-direction: column;
   text-align: center;
   margin-top: 0px;
@@ -17,6 +17,16 @@
   animation: fadeIn 3s ease-in forwards;
 }
 
+/* @keyframes is used to define animations, from and to are keywords that represent the initial and final state of the animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .welcome-text-bold {
   font-size: clamp(1rem, 8vw, 8rem);
   font-weight: bold;
@@ -26,11 +36,11 @@
   font-size: clamp(0.5rem, 1.5vw, 2rem);
 }
 
-/* Per dispositivi mobili */
+/* Per dispositivi mobili, ovvero con max-width: 768px */
 @media (max-width: 768px) {
   .welcome-section {
     background-attachment: scroll; /* migliora performance su mobile */
-    background-position: center;
+    background-position: center; /*is used to center a background image within its container, both vertically and horizontally: is short for background-position: center center */
   }
 }
 
@@ -41,16 +51,15 @@
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
   font-weight: normal;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.5; /* controls the vertical spacing between lines of text */
 }
 
 .container {
   margin-top: 100vh; /* sposta il resto del contenuto sotto la sezione di benvenuto */
 }
 
-.btn-primary {
+.btn {
   background-color: #c3ac00;
-  border: none;
   color: white;
   padding: 0.5rem 1rem;
   border: 2px solid #333; /* spessore, stile, colore */
@@ -58,7 +67,7 @@
   cursor: pointer;
 }
 
-.btn-primary:hover {
+.btn:hover {
   background-color: #e8d655;
 }
 
@@ -76,7 +85,10 @@
 
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* creates 3 columns. Each column takes up 1 fraction of the available space. So all columns of equal width */
   gap: 2rem;
   padding: 3rem;
   background: linear-gradient(to right, #a95252, #6faccc);
@@ -85,8 +97,8 @@
 
 .media-item {
   background: #fff;
-  position: relative;
-  display: inline;
+  position: relative; /* position an element relative to its normal position in the document flow. It still occupies space in the layout. You can use top, right, bottom, and left to nudge it from where it would normally be. Often used as a reference point for absolutely positioned child elements */
+  display: inline; /* Does not start on a new line. Only takes up as much width as necessary. Cannot have width or height set. Respects horizontal padding and margin, but not vertical (usually) */
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -94,10 +106,12 @@
 }
 
 .media-heading {
-  position: absolute;
+  position: absolute; /* The element is removed from the normal document flow. It does not take up space—other elements behave as if it’s not there. It is positioned relative to the nearest positioned ancestor */
   top: 30%; /* distanza dal bordo superiore */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(
+    -50%
+  ); /* is used to move an element horizontally by 50% of its own width to the left. It’s often used to perfectly center an element horizontally, especially when combined with left: 50% */
   font-family: "Gloria Hallelujah", cursive;
   font-size: 1.5rem;
   color: #f2f2f2;
@@ -110,7 +124,7 @@
 .media-item img {
   width: 100%;
   height: auto;
-  display: block;
+  display: block; /* The element starts on a new line. It takes up the full width of its parent container by default. You can set width, height, margin, and padding freely */
 }
 
 .media-item p {
@@ -128,7 +142,11 @@
 
 .personal-presentation {
   font-family: "Gloria Hallelujah", cursive;
-  font-size: clamp(0rem, 4vw, 4rem);
+  font-size: clamp(
+    0rem,
+    4vw,
+    4rem
+  ); /* minimum, desired, and maximum font size with respect to screen size */
   text-align: center;
   margin-top: 5rem;
   color: #222;
@@ -137,7 +155,7 @@
 }
 
 .personal-section {
-  display: flex;
+  display: flex; /* Turns the element into a flex container. Its direct children become flex items. Allows you to control alignment, spacing, and direction of items */
   justify-content: center;
   margin-top: 0rem;
   padding: 5rem;
@@ -157,7 +175,7 @@
 }
 
 .personal-column {
-  flex: 1;
+  flex: 1; /* short for flex-grow: 1; flex-shrink: 1; flex-basis: 0%; So that: flex-grow: 1 → The item can grow to fill available space. flex-shrink: 1 → The item can shrink if needed. flex-basis: 0% → The starting size is 0, so all space is distributed based on flex-grow */
   position: relative;
 }
 
@@ -167,7 +185,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   position: relative;
-  z-index: 2;
+  z-index: 2; /* sovrapposizione */
   margin-top: -30px; /* sovrapposizione */
 }
 
@@ -177,9 +195,9 @@
   padding-left: 5rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 1; /* sovrapposizione sotto la foto */
   margin-left: -60px; /* sovrapposizione sotto la foto */
-  margin-top: 40px;
+  margin-top: 40px; /* sovrapposizione sotto la foto */
 }
 
 .text-column p {
@@ -285,7 +303,7 @@
 }
 
 .contact-form textarea {
-  resize: vertical;
+  resize: vertical; /* Enables the user to click and drag the bottom edge of the element to change its height. Horizontal resizing is disabled. */
 }
 
 .education-section {
@@ -313,11 +331,11 @@
 }
 
 .education-grid label {
-  display: contents;
+  display: contents; /* It makes the element disappear from the layout, but keeps its children in the document flow as if they were direct children of the parent */
 }
 
 .education-grid input[type="radio"] {
-  justify-self: start;
+  justify-self: start; /*s used in CSS Grid Layout to align a grid item along the inline (row) axis within its grid area. Overrides the container’s justify-items setting for that specific item */
 }
 
 .education-grid span {

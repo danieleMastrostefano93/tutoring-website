@@ -1,7 +1,13 @@
 <!-- Navbar -->
+<!--navbar-expand-lg: Bootstrap funcionality that tells the navbar to be collapsed on screens smaller than the lg (large) breakpoint, and expanded (horizontal) on lg screens and larger-->
+<!--shadow-sm: Bootstrap utility that applies a small box shadow to an element, giving it a subtle elevation effect-->
+<!--navbar-dark: Bootstrap utility used to style the text and links in a navigation bar for dark or coloured backgrounds-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-seppia-custom shadow-sm">
+  <!--container-fluid: in Bootstrap is used to create a full-width container that spans the entire width of the viewport, regardless of screen size. It's ideal for layouts where you want edge-to-edge content or background colors-->
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="#">TutorOnline</a>
+    <!--navbar-toggler: in Bootstrap is used to create a button that toggles the navigation menu on smaller screens (like mobile devices, e.g. Hamburger menu)-->
+    <!--d-lg-none: hides the element on large screens and up, but remains visible on smaller screens-->
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -9,11 +15,18 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!--collapse: Hides the content by default and enables it to be toggled via JavaScript-->
+    <!--navbar-collapse: Applies specific styles to make the collapsed content look and behave like part of a Bootstrap navbar-->
+    <!-- d-none: in Bootstrap is a display utility that completely hides an element (display: none) on all screen sizes-->
+    <!--d-lg-flex: is a Bootstrap display utility that makes an element behave as a flex container (display: flex) starting at the large breakpoint and up-->
     <div
       class="collapse navbar-collapse d-none d-lg-flex justify-content-evenly w-100"
     >
+      <!--w-100: in Bootstrap is a width utility that sets an element’s width to 100% of its parent container-->
+      <!--d-flex in Bootstrap is a display utility that sets an element’s display to flex, enabling the use of Flexbox layout-->
       <ul class="navbar-nav w-100 d-flex justify-content-evenly">
         <li class="nav-item">
+          <!--routerLinkActive="active": It dynamically adds the specified class ("active" in this case) to the element when the route it links to is currently active. To apply the class only when the route matches exactly, use [routerLinkActiveOptions]="{ exact: true }"-->
           <a
             class="nav-link"
             routerLink="/"
@@ -23,27 +36,47 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/info" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="/info"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Su di noi</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/materiale" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="/materiale"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Materiale</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/prezzi" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="/prezzi"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Prezzi</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/recensioni" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="/recensioni"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Recensioni</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contatti" routerLinkActive="active"
+          <a
+            class="nav-link"
+            routerLink="/contatti"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             >Contatti</a
           >
         </li>
@@ -53,56 +86,40 @@
 </nav>
 
 <!-- Contenuto Home centrato sotto la navbar -->
-
-<div class="header-content">
+<div>
   <router-outlet></router-outlet>
 </div>
 
 <!-- Sidebar mobile -->
 <div class="sidebar d-lg-none" [class.open]="sidebarOpen">
-  <ul class="nav flex-column text-white p-3">
+  <!--[class.open]="sidebarOpen": adds or removes the class named "open" on an element based on the value of the sidebarOpen variable-->
+  <!--p-3: Adds padding of 1rem (16px) to the top, right, bottom, and left. The number 3 corresponds to a spacing scale in Bootstrap (ranging from 0 to 5 by default)-->
+  <ul class="nav flex-column p-3">
     <li class="nav-item">
-      <a class="nav-link text-white" routerLink="/" (click)="toggleSidebar()"
-        >Home</a
-      >
+      <a class="nav-link" routerLink="/" (click)="toggleSidebar()">Home</a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link text-white"
-        routerLink="/info"
-        (click)="toggleSidebar()"
+      <a class="nav-link" routerLink="/info" (click)="toggleSidebar()"
         >Su di noi</a
       >
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link text-white"
-        routerLink="/materiale"
-        (click)="toggleSidebar()"
+      <a class="nav-link" routerLink="/materiale" (click)="toggleSidebar()"
         >Materiale</a
       >
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link text-white"
-        routerLink="/prezzi"
-        (click)="toggleSidebar()"
+      <a class="nav-link" routerLink="/prezzi" (click)="toggleSidebar()"
         >Prezzi</a
       >
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link text-white"
-        routerLink="/prezzi"
-        (click)="toggleSidebar()"
+      <a class="nav-link" routerLink="/prezzi" (click)="toggleSidebar()"
         >Recensioni</a
       >
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link text-white"
-        routerLink="/contatti"
-        (click)="toggleSidebar()"
+      <a class="nav-link" routerLink="/contatti" (click)="toggleSidebar()"
         >Contatti</a
       >
     </li>

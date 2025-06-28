@@ -3,15 +3,16 @@
   color: #5a3e1b;
 }
 
+/* note that body is not present directly in app component but in its parent index.html */
 body {
   background-color: #f2f2f2; /* Bianco sporco */
 }
 
 .navbar {
-  position: fixed;
+  position: fixed; /* is used to position an element relative to the browser window (viewport, and not to any parent element), meaning it stays in the same place even when the page is scrolled */
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000; /* A higher z-index means the element will appear on top of elements with a lower z-index. Only works on elements with a positioning context */
 }
 
 body {
@@ -25,8 +26,8 @@ body {
 
 .nav-link {
   margin-left: 1rem;
-  font-weight: 500;
-  color: #5a3e1b !important;
+  font-weight: 500; /* sets the thickness (or boldness) of the text to a medium weight (normal is 400, bold is 700) */
+  color: #5a3e1b !important; /* !important: is used to force a style rule to override any other conflicting rules, regardless of specificity or source order */
 }
 
 .nav-link:hover {
@@ -60,20 +61,4 @@ body {
 .sidebar .nav-link {
   font-size: 1.2rem;
   padding: 0.75rem 1rem;
-}
-
-@media (max-width: 576px) {
-  .header-content h5 {
-    font-size: 1.2rem;
-  }
-
-  .header-content p {
-    font-size: 0.9rem;
-  }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
 }

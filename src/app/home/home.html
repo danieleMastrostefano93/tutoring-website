@@ -16,11 +16,13 @@
       Questa sezione serve per illustrarti una certa caratteristica di questa
       piattaforma; per ulteriori informazioni cliccare qui sotto.
     </p>
+    <!--mt-4: stays for margin-top: 1.5rem, as in Bootstrap scale utility-->
+    <!--btn-lg: Makes a button larger than the default size-->
     <div class="mt-4">
       <a
         routerLink="/info"
         routerLinkActive="active"
-        class="btn btn-primary btn-lg"
+        class="btn btn-lg"
         >Scopri di più</a
       >
     </div>
@@ -36,7 +38,7 @@
       <a
         routerLink="/info"
         routerLinkActive="active"
-        class="btn btn-primary btn-lg"
+        class="btn btn-lg"
         >Scopri di più</a
       >
     </div>
@@ -52,7 +54,7 @@
       <a
         routerLink="/info"
         routerLinkActive="active"
-        class="btn btn-primary btn-lg"
+        class="btn btn-lg"
         >Scopri di più</a
       >
     </div>
@@ -84,7 +86,7 @@
         <a
           routerLink="/info"
           routerLinkActive="active"
-          class="btn btn-primary btn-lg"
+          class="btn btn-lg"
           >Scopri di più</a
         >
       </div>
@@ -115,6 +117,7 @@
     <fieldset class="education-section">
       <legend class="education-title">Titolo di Studio:</legend>
       <div class="education-grid">
+        <!--radio type allows for only one selection-->
         <label
           ><input type="radio" name="education" value="elementari" /><span
             >Scuole Elementari</span
@@ -145,8 +148,8 @@
 
     <label for="message">Messaggio:</label>
     <textarea id="message" name="message" rows="5" required></textarea>
-
-    <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+    <!--btn-primary: Gives the button a primary color (usually blue by default)-->
+    <button type="submit" class="btn">Invia Messaggio</button>
   </form>
 </div>
 
