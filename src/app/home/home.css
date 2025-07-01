@@ -2,13 +2,12 @@
 
 .welcome-section {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center; /* justify-content: center: Aligns items along the main axis (horizontal by default), centers items horizontally in a flex container (if flex-direction: row, otherwise does opposite) used with display:flex) */
   align-items: center; /* align-items: center: Aligns items along the cross axis (vertical by default), centers items vertically in a flex container (if flex-direction: row, otherwise does opposite) used with display:flex) */
   flex-direction: column;
   text-align: center;
-  margin-top: 0px;
-  padding: 5rem;
   background-color: #333;
 }
 
@@ -28,8 +27,9 @@
 }
 
 .welcome-text-bold {
-  font-size: clamp(1rem, 8vw, 8rem);
+  font-size: clamp(2.5rem, 8vw, 8rem);
   font-weight: bold;
+  margin: 0 1rem;
 }
 
 .welcome-text {
@@ -62,103 +62,42 @@
   background-color: #c3ac00;
   color: white;
   padding: 0.5rem 1rem;
+  margin: 1rem;
   border: 2px solid #333; /* spessore, stile, colore */
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .btn:hover {
   background-color: #e8d655;
 }
 
-.grid-presentation {
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: 1.5rem;
-  text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
-  padding: 1rem;
-  color: #222;
-  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
-  text-decoration: underline; /* sottolineatura */
+.motivational-sentence {
+  margin: 5rem 5rem;
 }
 
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ); /* creates 3 columns. Each column takes up 1 fraction of the available space. So all columns of equal width */
-  gap: 2rem;
-  padding: 3rem;
-  background: linear-gradient(to right, #a95252, #6faccc);
-  text-align: center;
-}
-
-.media-item {
-  background: #fff;
-  position: relative; /* position an element relative to its normal position in the document flow. It still occupies space in the layout. You can use top, right, bottom, and left to nudge it from where it would normally be. Often used as a reference point for absolutely positioned child elements */
-  display: inline; /* Does not start on a new line. Only takes up as much width as necessary. Cannot have width or height set. Respects horizontal padding and margin, but not vertical (usually) */
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Fa sì che l'immagine non esca dai bordi */
-}
-
-.media-heading {
-  position: absolute; /* The element is removed from the normal document flow. It does not take up space—other elements behave as if it’s not there. It is positioned relative to the nearest positioned ancestor */
-  top: 30%; /* distanza dal bordo superiore */
-  left: 50%;
-  transform: translateX(
-    -50%
-  ); /* is used to move an element horizontally by 50% of its own width to the left. It’s often used to perfectly center an element horizontally, especially when combined with left: 50% */
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: 1.5rem;
-  color: #f2f2f2;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
-  z-index: 2;
-}
-
-.media-item img {
-  width: 100%;
-  height: auto;
-  display: block; /* The element starts on a new line. It takes up the full width of its parent container by default. You can set width, height, margin, and padding freely */
-}
-
-.media-item p {
-  margin: 1rem 0;
-  font-size: 1rem;
+.motivational-text {
+  font-size: clamp(1rem, 5vw, 10rem);
+  padding: 8rem 8rem;
+  text-align: left;
+  font-family: "Times New Roman", serif, cursive;
+  text-shadow: 0px 0px 10px #222;
   color: #333;
+  line-height: 1.5;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .media-grid {
-    grid-template-columns: 1fr;
+  .motivational-text {
+    padding: 2rem;
   }
-}
-
-.personal-presentation {
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: clamp(
-    0rem,
-    4vw,
-    4rem
-  ); /* minimum, desired, and maximum font size with respect to screen size */
-  text-align: center;
-  margin-top: 5rem;
-  color: #222;
-  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
-  text-decoration: underline; /* sottolineatura */
 }
 
 .personal-section {
   display: flex; /* Turns the element into a flex container. Its direct children become flex items. Allows you to control alignment, spacing, and direction of items */
   justify-content: center;
-  margin-top: 0rem;
   padding: 5rem;
+  padding-top: 0rem;
   background-color: #f2f2f2;
 }
 
@@ -181,6 +120,7 @@
 
 .photo-column img {
   width: 500px;
+  max-width: 100%;
   height: 700px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -191,7 +131,7 @@
 
 .text-column {
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 1rem;
   padding-left: 5rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -201,9 +141,14 @@
 }
 
 .text-column p {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   line-height: 1.6;
   color: #333;
+}
+
+.text-column .mt-4 {
+  display: flex;
+  justify-content: center;
 }
 
 /* Sezione personale responsive tablet */
@@ -232,6 +177,7 @@
 @media (max-width: 768px) {
   .personal-section {
     padding: 2rem;
+    padding-top: 0rem;
   }
 
   .personal-container {
@@ -259,7 +205,7 @@
 
 .contact-title {
   font-family: "Gloria Hallelujah", cursive;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-top: 4rem;
   margin-bottom: 2rem;
@@ -270,7 +216,7 @@
 
 .contact-subtitle {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .contact-section {
@@ -291,6 +237,7 @@
 .contact-form label {
   font-weight: bold;
   color: #333;
+  font-size: 1, 25rem;
 }
 
 .contact-form input,
@@ -316,7 +263,7 @@
 
 .education-title {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   text-align: left;
   margin-bottom: 1rem;
   display: block;
@@ -340,6 +287,7 @@
 
 .education-grid span {
   font-size: 1rem;
+  font-weight: normal;
   color: #333;
 }
 
@@ -348,6 +296,6 @@
   padding: 2rem;
   background-color: #333;
   color: #f2f2f2;
-  font-size: 0.9rem;
+  font-size: 0.5 rem;
   margin-top: 4rem;
 }

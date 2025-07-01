@@ -1,0 +1,136 @@
+<h2 class="grid-presentation">Scopri la nostra offerta formativa:</h2>
+<div class="media-grid">
+  <div class="media-item">
+    <div class="media-item-img">
+      <div class="media-heading">Materiale lezioni</div>
+      <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 1" />
+    </div>
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <!--mt-4: stays for margin-top: 1.5rem, as in Bootstrap scale utility-->
+    <!--btn-lg: Makes a button larger than the default size-->
+    <div class="mt-4">
+      <a routerLink="/info" routerLinkActive="active" class="btn btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+  <div class="media-item">
+    <div class="media-item-img">
+      <div class="media-heading">Prezzi lezioni</div>
+      <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 2" />
+    </div>
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <div class="mt-4">
+      <a routerLink="/info" routerLinkActive="active" class="btn btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+  <div class="media-item">
+    <div class="media-item-img">
+      <div class="media-heading">Prenota appuntamento</div>
+      <img src="../../assets/foto-lavagna.jpg" alt="Multimedia 3" />
+    </div>
+    <p>
+      Questa sezione serve per illustrarti una certa caratteristica di questa
+      piattaforma; per ulteriori informazioni cliccare qui sotto.
+    </p>
+    <div class="mt-4">
+      <a routerLink="/info" routerLinkActive="active" class="btn btn-lg"
+        >Scopri di più</a
+      >
+    </div>
+  </div>
+</div>
+
+<h2 class="personal-presentation">Su di me:</h2>
+
+---------------------------------------------------------------------------------------
+
+.grid-presentation {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
+  text-decoration: underline; /* sottolineatura */
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* creates 3 columns. Each column takes up 1 fraction of the available space. So all columns of equal width */
+  gap: 2rem;
+  padding: 3rem;
+  background: linear-gradient(to right, #a95252, #6faccc);
+  text-align: center;
+}
+
+.media-item {
+  background: #fff;
+  position: relative; /* position an element relative to its normal position in the document flow. It still occupies space in the layout. You can use top, right, bottom, and left to nudge it from where it would normally be. Often used as a reference point for absolutely positioned child elements */
+  display: inline; /* Does not start on a new line. Only takes up as much width as necessary. Cannot have width or height set. Respects horizontal padding and margin, but not vertical (usually) */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Fa sì che l'immagine non esca dai bordi */
+}
+
+.media-item-img {
+  position: relative;
+}
+.media-heading {
+  position: absolute; /* The element is removed from the normal document flow. It does not take up space—other elements behave as if it’s not there. It is positioned relative to the nearest positioned ancestor */
+  top: 30%; /* distanza dal bordo superiore */
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* is used to move an element horizontally by 50% of its own width to the left. It’s often used to perfectly center an element horizontally, especially when combined with left: 50% */
+  font-family: "Gloria Hallelujah", cursive;
+  color: #f2f2f2;
+  font-size: 1, 25rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  z-index: 2;
+}
+
+.media-item img {
+  width: 100%;
+  height: auto;
+  display: block; /* The element starts on a new line. It takes up the full width of its parent container by default. You can set width, height, margin, and padding freely */
+}
+
+.media-item p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.personal-presentation {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.5rem; /* minimum, desired, and maximum font size with respect to screen size */
+  text-align: center;
+  margin-top: 5rem;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(42, 39, 39, 1); /* ombra */
+  text-decoration: underline; /* sottolineatura */
+}

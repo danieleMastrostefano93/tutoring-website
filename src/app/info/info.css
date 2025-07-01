@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+
+/* Sezione descrizione + foto */
+.intro-section {
+  background-color: #b3a1be;
+  padding: 1rem;
+}
+
+.intro-container {
+  display: flex;
+  flex-wrap: wrap; /* flex-wrap: wrap dice al contenitore di andare a capo quando gli elementi non ci stanno più su una sola riga */
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.intro-text,
+.intro-photo {
+  flex: 1 1 45%; /* Questo elemento dovrebbe iniziare largo il 45% del contenitore, ma può crescere o restringersi se necessario */
+  text-align: left;
+}
+
+.intro-text {
+  padding-right: 8rem;
+  line-height: 1.5;
+}
+
+.intro-text p {
+  font-size: 0.75rem;
+}
+
+.image-rounded {
+  width: 500px;
+  height: auto;
+  border-radius: 10%;
+  box-shadow: 20px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1050px) {
+  .intro-container {
+    flex-direction: row;
+    margin: 0rem auto;
+  }
+
+  .intro-text,
+  .intro-photo {
+    flex: 1 1 100%;
+  }
+
+  .intro-text {
+    text-align: left;
+    padding: 2rem 5rem;
+  }
+
+  .intro-photo {
+    text-align: right;
+    padding: 2rem 5rem;
+  }
+
+  .image-rounded {
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: row;
+    margin: 2rem auto;
+  }
+
+  .intro-text,
+  .intro-photo {
+    flex: 1 1 100%;
+  }
+
+  .intro-text {
+    text-align: left;
+    padding: 0rem 4rem;
+    padding-bottom: 1rem;
+  }
+
+  .intro-photo {
+    text-align: right;
+    padding: 0rem 4rem;
+    padding-top: 1rem;
+  }
+
+  .image-rounded {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* Sezione esperienze */
+.experience-section {
+  padding: 4rem 2rem;
+  background-color: #f2f2f2;
+  text-align: center;
+  font-family: "Merriweather", serif, cursive;
+}
+
+.experience-section p {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 3rem auto;
+  border-left: 3.5px solid #00796b;
+  padding-left: 2rem;
+}
+
+.timeline-item {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #00796b;
+  border-radius: 50%;
+}
