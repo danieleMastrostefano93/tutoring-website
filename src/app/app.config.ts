@@ -25,7 +25,7 @@ import { environment } from '../environments/environments';
 //import { provideAnalytics } from '@angular/fire/analytics';
 
 // Your web app's Firebase configuration
-//TODO: da spostare tutte le configurazioni in file environment
+//TODO: da spostare tutte le configurazioni in file environment e verificare problemi con GIT che non lo esclude nel gitignore
 const firebaseConfig = {
   apiKey: environment.firebaseApiKey,
   authDomain: 'tutor-website-717e5.firebaseapp.com',
