@@ -1,0 +1,35 @@
+.hero {
+  text-align: center;
+  padding: 4rem;
+  background: #279e6d;
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.hero p {
+  font-size: 2rem;
+}
+
+.plans {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+.offers,
+.faq,
+.cta {
+  padding: 2rem;
+  text-align: center;
+}
+
+.cta button {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

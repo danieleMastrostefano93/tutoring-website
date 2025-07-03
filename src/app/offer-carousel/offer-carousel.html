@@ -1,0 +1,7 @@
+<div class="carousel">
+  <div class="offer" *ngFor="let offer of offers">
+    <i [class]="offer.iconClass" class="icon"></i>
+    <h4>{{ offer.title }}</h4>
+    <p>{{ offer.description }}</p>
+  </div>
+</div>

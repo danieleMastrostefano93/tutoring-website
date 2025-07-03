@@ -1,1 +1,23 @@
-<p>prezzi works!</p>
+<section class="hero">
+  <h1>Investi nel tuo futuro</h1>
+  <p>Scegli il piano che fa per te</p>
+</section>
+
+<section class="plans">
+  <app-pricing-card *ngFor="let plan of plans" [plan]="plan"></app-pricing-card>
+</section>
+
+<section class="offers">
+  <h2>Offerte del mese</h2>
+  <app-offer-carousel [offers]="specialOffers"></app-offer-carousel>
+</section>
+
+<section class="faq">
+  <h2>Domande frequenti</h2>
+  <app-faq [questions]="faqList"></app-faq>
+</section>
+
+<section class="cta">
+  <h3>Hai dubbi?</h3>
+  <button>Contattaci</button>
+</section>

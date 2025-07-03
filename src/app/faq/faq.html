@@ -1,0 +1,4 @@
+<div class="faq-item" *ngFor="let q of questions; let i = index">
+  <h4 (click)="toggle(i)">{{ q.question }}</h4>
+  <p *ngIf="openIndex === i">{{ q.answer }}</p>
+</div>

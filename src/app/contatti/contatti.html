@@ -1,28 +1,78 @@
-<div class="container mt-5">
-  <h2>Contattami</h2>
-  <form>
-    <div class="mb-3">
-      <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome">
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email">
-    </div>
-    <div class="mb-3">
-      <label for="messaggio" class="form-label">Messaggio</label>
-      <textarea class="form-control" id="messaggio"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Invia</button>
-  </form>
+<div class="contact-title-section">
+  <h2 class="contact-title">Contattami:</h2>
+  <h3 class="contact-subtitle">
+    Vuoi avere maggiori info sul servizio offerto o entrare in contatto con
+    me?<br />
+    Inviami un messaggio compilando la form qui sotto:
+  </h3>
+</div>
+<div class="contact-section">
+  <!--#form="ngForm": This creates a template reference variable named 'form' and assigns it the value of the ngForm directive. This allows you to access the form's state and properties (like validity, values, etc.) in your component or template-->
+  <!--(ngSubmit)="onSubmit(form)": This binds the ngSubmit event (triggered when the form is submitted) to the onSubmit() method in your component. It passes the form reference as an argument to that method-->
+  <!--ngModel collega ogni campo del form al sistema di gestione dei form di Angular. Permette di accedere ai valori e allo stato di validazione dei campi tramite form.controls nel TypeScript. Senza ngModel, Angular non può tracciare se un campo è valido, toccato, o compilato-->
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="contact-form">
+    <label for="name">Nome*:</label>
+    <input type="text" id="name" name="name" autocomplete="name" ngModel />
 
-  <h3 class="mt-5">Prenota una lezione</h3>
-  <iframe src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=Europe%2FRome" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <label for="surname">Cognome*:</label>
+    <input type="text" id="surname" name="surname" ngModel />
 
-  <h3 class="mt-5">Pagamento con PayPal</h3>
-  <form action="https://www.paypal.com/donate" method="post" target="_blank">
-    <input type="hidden" name="business" value="your_paypal_email@example.com">
-    <input type="hidden" name="currency_code" value="EUR">
-    <input type="submit" value="Paga con PayPal" class="btn btn-success">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" autocomplete="email" ngModel />
+
+    <label for="phone">Numero di Telefono*:</label>
+    <input type="tel" id="phone" name="phone" autocomplete="phone" ngModel />
+
+    <fieldset class="education-section">
+      <legend class="education-title">Titolo di Studio*:</legend>
+      <div class="education-grid">
+        <!--radio type allows for only one selection-->
+        <label
+          ><input
+            type="radio"
+            name="education"
+            value="elementari"
+            ngModel
+          /><span>Scuole Elementari</span></label
+        >
+        <label
+          ><input type="radio" name="education" value="medie" ngModel /><span
+            >Scuole Medie</span
+          ></label
+        >
+        <label
+          ><input
+            type="radio"
+            name="education"
+            value="superiori"
+            ngModel
+          /><span>Superiori o Liceo</span></label
+        >
+        <label
+          ><input
+            type="radio"
+            name="education"
+            value="universita"
+            ngModel
+          /><span>Università</span></label
+        >
+        <label
+          ><input type="radio" name="education" value="altro" ngModel /><span
+            >Altro</span
+          ></label
+        >
+      </div>
+    </fieldset>
+
+    <label for="message">Messaggio*:</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      autocomplete="message"
+      ngModel
+    ></textarea>
+    <!--btn-primary: Gives the button a primary color (usually blue by default)-->
+    <button type="submit" class="btn">Invia Messaggio</button>
   </form>
 </div>

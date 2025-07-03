@@ -1,0 +1,9 @@
+.success-popup {
+  background-color: #00db00;
+  color: black;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 250px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
