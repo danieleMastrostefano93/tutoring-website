@@ -19,12 +19,15 @@ import {
 import { provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
+import { environment } from '../environments/environments';
+
 //import { getAnalytics } from 'firebase/analytics';
 //import { provideAnalytics } from '@angular/fire/analytics';
 
 // Your web app's Firebase configuration
+//TODO: da spostare tutte le configurazioni in file environment
 const firebaseConfig = {
-  apiKey: 'AIzaSyDiLTBHpJoap4kutv8IY1Mm6z2xKWzM5wo',
+  apiKey: environment.firebaseApiKey,
   authDomain: 'tutor-website-717e5.firebaseapp.com',
   projectId: 'tutor-website-717e5',
   storageBucket: 'tutor-website-717e5.firebasestorage.app',
