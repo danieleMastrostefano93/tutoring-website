@@ -19,7 +19,7 @@ import {
 import { provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
-import { environment } from '../environments/environments';
+import { environment } from '../environments/environment';
 
 //import { getAnalytics } from 'firebase/analytics';
 //import { provideAnalytics } from '@angular/fire/analytics';
