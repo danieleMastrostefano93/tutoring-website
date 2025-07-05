@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
@@ -11,7 +11,7 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
   styleUrls: ['./review-form.css'],
 })
 export class ReviewForm {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private cdr: ChangeDetectorRef) {}
 
   hoveredRating = 0;
 
@@ -42,6 +42,7 @@ export class ReviewForm {
           const reviewsRef = collection(this.firestore, 'recensioni');
           await addDoc(reviewsRef, this.review);
           this.submitted = true;
+          this.cdr.detectChanges();
           console.log('Recensione salvata su Firestore:', this.review);
         } catch (error) {
           console.error('Errore nel salvataggio:', error);
