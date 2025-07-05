@@ -3,3 +3,78 @@
   color: #ff5722;
   margin-bottom: 0.5rem;
 }
+
+.offer-banner {
+  background: linear-gradient(135deg, #ff3b30, #ffd60a);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.offer {
+  padding: 4rem;
+}
+
+.offer-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.offer-description {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.offer-badge {
+  background-color: #007aff;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  display: inline-block;
+  box-shadow: 0 0 10px #007aff;
+}
+
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(0, 122, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

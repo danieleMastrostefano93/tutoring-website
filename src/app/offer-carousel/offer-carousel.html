@@ -1,7 +1,10 @@
-<div class="carousel">
-  <div class="offer" *ngFor="let offer of offers">
-    <i [class]="offer.iconClass" class="icon"></i>
-    <h4>{{ offer.title }}</h4>
-    <p>{{ offer.description }}</p>
+<div class="offer-banner">
+  <div class="offer-content">
+    <div class="offer" *ngFor="let offer of offers">
+      <i [class]="offer.iconClass" class="icon"></i>
+      <h2 class="offer-title">🔥 {{ offer.title }} 🔥</h2>
+      <p class="offer-description">{{ offer.description }}</p>
+      <div class="offer-badge pulse">-50%</div>
+    </div>
   </div>
 </div>

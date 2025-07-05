@@ -20,16 +20,27 @@
 }
 
 .offers,
-.faq,
-.cta {
+.faq {
   padding: 2rem;
   text-align: center;
 }
 
-.cta button {
-  padding: 0.5rem 1rem;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+.offer-icon {
+  font-size: 3rem;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.icon-glow {
+  animation: glow 1.5s infinite alternate;
+  margin-left: 0.5rem;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ffd60a, 0 0 10px #ff3b30;
+  }
+  to {
+    text-shadow: 0 0 20px #ffd60a, 0 0 30px #ff3b30;
+  }
 }

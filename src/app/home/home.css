@@ -199,6 +199,160 @@
   }
 }
 
+.recensioni-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.recensioni-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.recensioni-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.recensione-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  min-width: 300px;
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.recensione-card:hover {
+  transform: scale(1.05);
+}
+
+.recensione-card h3 {
+  margin-top: 0;
+  color: #c3ac00;
+}
+
+.recensione-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.recensioni-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+  overflow: hidden;
+}
+
+.recensioni-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.recensioni-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.recensioni-track {
+  display: flex;
+  width: max-content;
+  animation: scrollRecensioni 30s linear infinite;
+}
+
+.recensione-card {
+  flex: 0 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 0 1rem;
+  min-width: 300px;
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.recensione-card:hover {
+  transform: scale(1.05);
+}
+
+.recensione-card h3 {
+  margin-top: 0;
+  color: #c3ac00;
+}
+
+.recensione-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+@keyframes scrollRecensioni {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.recensioni-slider:hover .recensioni-track {
+  animation-play-state: paused;
+}
+
+.recensioni-track {
+  transition: transform 0.5s ease-in-out;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1;
+}
+
+.stars::before {
+  content: "★★★★★";
+  letter-spacing: 0;
+}
+
+.filled-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: gold;
+}
+
+.filled-stars::before {
+  content: "★★★★★";
+  letter-spacing: 0;
+}
+
+.rating-value {
+  font-size: 1rem;
+  color: #333;
+}
+
 .site-footer {
   text-align: center;
   padding: 2rem;

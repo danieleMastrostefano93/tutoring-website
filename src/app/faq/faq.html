@@ -1,4 +1,14 @@
-<div class="faq-item" *ngFor="let q of questions; let i = index">
-  <h4 (click)="toggle(i)">{{ q.question }}</h4>
-  <p *ngIf="openIndex === i">{{ q.answer }}</p>
+<div class="faq-section">
+  <h2 class="faq-title">Domande Frequenti</h2>
+  <div class="faq-item" *ngFor="let q of questions; let i = index">
+    <button class="faq-question" (click)="toggle(i)">
+      {{ q.question }}
+      <span class="faq-toggle">{{ openIndex === i ? '-' : '+' }}</span>
+    </button>
+    <div class="faq-answer" [class.open]="openIndex === i">{{ q.answer }}</div>
+  </div>
+  <div class="contact">
+    <h3>Hai ancora dubbi?</h3>
+    <button routerLink="/contatti" class="contact-button">Contattaci!</button>
+  </div>
 </div>

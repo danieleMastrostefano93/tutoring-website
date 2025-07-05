@@ -51,6 +51,33 @@
   </div>
 </div>
 
+<!--Punteggio recensioni-->
+<section class="recensioni-section">
+  <h2>Recensioni degli studenti</h2>
+  <div class="star-rating">
+    <div class="stars">
+      <div class="filled-stars" [style.width.%]="(mediaRating / 5) * 100"></div>
+    </div>
+    <span class="rating-value" *ngIf="mediaRating !== undefined"
+      >{{ mediaRating.toFixed(2) }}/5</span
+    >
+  </div>
+
+  <!--Recensioni in rilievo-->
+  <div class="recensioni-slider">
+    <div class="recensioni-track">
+      <div
+        class="recensione-card"
+        *ngFor="let recensione of recensioni$ | async"
+      >
+        <h3>{{ recensione.name }}</h3>
+        <p>"{{ recensione.comment }}"</p>
+        <p>⭐ {{ recensione.rating }}/5</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!--Footer-->
 <footer class="site-footer">
   <p>
