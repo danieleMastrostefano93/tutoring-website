@@ -70,11 +70,14 @@
         class="recensione-card"
         *ngFor="let recensione of recensioni$ | async"
       >
-        <h3>{{ recensione.name }}</h3>
+        <h3>{{ recensione.name || 'Anonimo' }}</h3>
         <p>"{{ recensione.comment }}"</p>
         <p>⭐ {{ recensione.rating }}/5</p>
       </div>
     </div>
+    <button class="mostra-tutte-btn" (click)="vaiAlleRecensioni()">
+      Mostra tutte le recensioni
+    </button>
   </div>
 </section>
 

@@ -5,6 +5,7 @@ import { Prezzi } from './prezzi/prezzi';
 import { ReviewForm } from '../app/review-form/review-form';
 import { Contatti } from './contatti/contatti';
 import { Info } from './info/info';
+import { TutteRecensioni } from './tutte-recensioni/tutte-recensioni';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'recensioni', component: ReviewForm },
   { path: 'contatti', component: Contatti },
   { path: 'info', component: Info },
+  { path: 'tutte-recensioni', component: TutteRecensioni },
 ];

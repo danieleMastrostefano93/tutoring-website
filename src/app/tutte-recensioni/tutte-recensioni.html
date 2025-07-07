@@ -1,0 +1,34 @@
+<div class="pagina-recensioni">
+  <div class="contenitore-bianco">
+    <div class="box-recensioni">
+      <h2>Facci Sapere Cosa ne Pensi del Nostro Servizio</h2>
+      <div class="valutazione">
+        <span class="stelle">⭐ 4.4</span>
+        <span class="sottotitolo">Google Punteggio Complessivo</span>
+      </div>
+      <button class="scrivi-btn" (click)="vaiAlleRecensioni()">
+        Scrivi la tua Recensione
+      </button>
+    </div>
+
+    <div class="filtro-container">
+      <label>Ordina per:</label>
+      <select [(ngModel)]="filtro" (change)="cambiaFiltro(filtro)">
+        <option value="data_desc">Più recenti</option>
+        <option value="punteggio">Punteggio più alto</option>
+      </select>
+    </div>
+
+    <div class="lista-recensioni">
+      <ng-container *ngIf="recensioni$ | async as recensioni">
+        <div *ngFor="let r of recensioni" class="card-blu">
+          <h3>{{ r.name || 'Anonimo' }}</h3>
+          <div class="rating">
+            ⭐ {{ r.rating }} • {{ tempoTrascorso(r.createdAt) }}
+          </div>
+          <p class="commento">{{ r.comment }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

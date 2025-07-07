@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { serverTimestamp } from 'firebase/firestore';
 
 @Component({
   standalone: true,
@@ -40,10 +41,16 @@ export class ReviewForm {
       if (this.review.rating && this.review.comment.trim()) {
         try {
           const reviewsRef = collection(this.firestore, 'recensioni');
-          await addDoc(reviewsRef, this.review);
+
+          const reviewWithTimestamp = {
+            ...this.review,
+            createdAt: serverTimestamp(),
+          };
+
+          await addDoc(reviewsRef, reviewWithTimestamp); // <-- usa l'oggetto corretto
           this.submitted = true;
           this.cdr.detectChanges();
-          console.log('Recensione salvata su Firestore:', this.review);
+          console.log('Recensione salvata su Firestore:', reviewWithTimestamp);
         } catch (error) {
           console.error('Errore nel salvataggio:', error);
         }

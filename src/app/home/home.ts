@@ -3,6 +3,7 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class Home implements OnInit {
   hasHalfStar = false;
   halfStarPercentage = 0;
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, private router: Router) {
     this.calculateStars();
   }
 
@@ -32,6 +33,10 @@ export class Home implements OnInit {
     this.emptyStars = Array(empty).fill(0);
     this.hasHalfStar = decimal > 0 && decimal < 1;
     this.halfStarPercentage = Math.round(decimal * 100);
+  }
+
+  vaiAlleRecensioni() {
+    this.router.navigate(['/tutte-recensioni']);
   }
 
   ngOnInit(): void {
