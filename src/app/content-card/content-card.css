@@ -1,0 +1,59 @@
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .tags {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 0.75rem;
+  }
+
+  .feedback {
+    margin-top: 0.5rem;
+
+    button {
+      margin-left: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &.active {
+        color: #007bff;
+      }
+    }
+  }
+
+  .video-player {
+    margin-top: 1rem;
+    background: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  p {
+    margin-top: 2.5rem;
+  }
+}
+
+.actions button {
+  margin-top: 0.75rem;
+  background-color: rgb(30, 124, 41);
+  color: white;
+}
+
+.close-button {
+  margin-top: 0.75rem;
+  background-color: rgb(124, 30, 30);
+  color: white;
+}

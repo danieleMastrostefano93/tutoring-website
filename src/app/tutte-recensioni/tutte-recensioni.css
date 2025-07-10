@@ -1,59 +1,66 @@
 .pagina-recensioni {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 2rem;
-  background-color: #f0f0f0;
+  background-color: #333;
+}
+
+.pagina-recensioni h2 {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+  color: #ffffff;
+  padding: 2rem;
 }
 
 .contenitore-bianco {
   background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 800px;
+  padding: 0.5rem;
+  margin: 4rem auto;
+  border-radius: 4px;
+  max-width: 1100px;
   width: 100%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .box-recensioni {
-  background-color: #d2a679;
+  background-color: #ad8d6e;
   color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
+  padding: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  border-radius: 4px;
   text-align: center;
-  margin-bottom: 2rem;
-
-  h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
 
   .valutazione {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 
     .stelle {
-      color: #ff7f00;
+      color: #ff6200;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
     .sottotitolo {
       display: block;
-      margin-top: 0.3rem;
+      margin-top: 0.75rem;
     }
   }
 
   .scrivi-btn {
-    background-color: #ff7f00;
+    background-color: #ff6d12;
     color: #ffffff;
     border: none;
     padding: 0.6rem 1.2rem;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
 
     &:hover {
-      background-color: #e56f00;
+      background-color: #ec9112;
     }
   }
 }
@@ -62,24 +69,24 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .card-blu {
-  background-color: #2c3e50;
+  background-color: #252a2f;
   color: #ffffff;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 
   h3 {
-    color: #ffd700;
+    color: rgba(234, 201, 13, 0.311);
     margin-bottom: 0.5rem;
   }
 
   .rating {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #ff7f00;
+    color: #ff6200;
   }
 
   .dettagli {
@@ -101,6 +108,13 @@
 .filtro-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  margin: 1rem;
+  margin: 1.5rem;
+  font-size: 1rem;
+
+  label {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 }

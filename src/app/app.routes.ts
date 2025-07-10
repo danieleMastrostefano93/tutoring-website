@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
-import { Materiale } from './materiale/materiale';
+import { MaterialPage } from './material-page/material-page';
 import { Prezzi } from './prezzi/prezzi';
 import { ReviewForm } from '../app/review-form/review-form';
 import { Contatti } from './contatti/contatti';
@@ -9,7 +9,7 @@ import { TutteRecensioni } from './tutte-recensioni/tutte-recensioni';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'materiale', component: Materiale },
+  { path: 'materiale', component: MaterialPage },
   { path: 'prezzi', component: Prezzi },
   { path: 'recensioni', component: ReviewForm },
   { path: 'contatti', component: Contatti },

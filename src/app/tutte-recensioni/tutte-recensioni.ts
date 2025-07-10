@@ -23,6 +23,8 @@ export class TutteRecensioni implements OnInit {
   private firestore = inject(Firestore);
   recensioni$!: Observable<any[]>;
   filtro: string = 'data_desc';
+  totaleRecensioni: number = 0;
+  mediaPunteggio: number = 0;
 
   constructor(private router: Router) {}
 
@@ -38,6 +40,19 @@ export class TutteRecensioni implements OnInit {
     const recensioniRef = collection(this.firestore, 'recensioni');
     const q = query(recensioniRef, ordinaPer);
     this.recensioni$ = collectionData(q, { idField: 'id' });
+
+    // Function che conta le recensioni e recupera la media punteggio
+    this.recensioni$.subscribe((recensioni) => {
+      //Calcolo il numero di recensioni
+      this.totaleRecensioni = recensioni.length;
+      //Calcola la media punteggio
+      if (recensioni.length > 0) {
+        const somma = recensioni.reduce((acc, r) => acc + r.rating, 0);
+        this.mediaPunteggio = somma / recensioni.length;
+      } else {
+        this.mediaPunteggio = 0;
+      }
+    });
   }
 
   cambiaFiltro(nuovoFiltro: string) {

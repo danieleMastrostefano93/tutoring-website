@@ -2,7 +2,7 @@
 <div class="welcome-section">
   <div class="welcome-text-custom fade-in">
     <h5 class="welcome-text-bold">Benvenuto su TutorOnline</h5>
-    <h6 class="welcome-text">La tua piattaforma di lezioni private online</h6>
+    <h6 class="welcome-text">La Tua Piattaforma di Lezioni Private Online</h6>
   </div>
 </div>
 
@@ -53,7 +53,7 @@
 
 <!--Punteggio recensioni-->
 <section class="recensioni-section">
-  <h2>Recensioni degli studenti</h2>
+  <h2>Cosa Dicono del Nostro Servizio</h2>
   <div class="star-rating">
     <div class="stars">
       <div class="filled-stars" [style.width.%]="(mediaRating / 5) * 100"></div>
@@ -75,9 +75,12 @@
         <p>⭐ {{ recensione.rating }}/5</p>
       </div>
     </div>
-    <button class="mostra-tutte-btn" (click)="vaiAlleRecensioni()">
-      Mostra tutte le recensioni
-    </button>
+
+    <div class="recensioni-button-container">
+      <button class="btn btn-lg" (click)="vaiAlleRecensioni()">
+        Tutte le recensioni
+      </button>
+    </div>
   </div>
 </section>
 

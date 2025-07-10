@@ -200,83 +200,39 @@
 }
 
 .recensioni-section {
+  margin-top: 4rem;
   padding: 4rem 2rem;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.recensioni-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #333;
-}
-
-.recensioni-container {
-  display: flex;
-  overflow-x: auto;
-  gap: 1.5rem;
-  padding: 1rem;
-  scroll-snap-type: x mandatory;
-}
-
-.recensione-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  min-width: 300px;
-  max-width: 350px;
-  transition: transform 0.3s ease;
-}
-
-.recensione-card:hover {
-  transform: scale(1.05);
-}
-
-.recensione-card h3 {
-  margin-top: 0;
-  color: #c3ac00;
-}
-
-.recensione-card p {
-  color: #555;
-  font-size: 1rem;
-}
-
-.recensioni-section {
-  padding: 4rem 2rem;
-  background-color: #f9f9f9;
+  background-color: #f2f2f2;
   text-align: center;
   overflow: hidden;
 }
 
 .recensioni-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  margin-bottom: 2.5rem;
   color: #333;
 }
 
 .recensioni-slider {
+  margin-top: 4rem;
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 .recensioni-track {
   display: flex;
   width: max-content;
-  animation: scrollRecensioni 30s linear infinite;
+  animation: scrollRecensioni 30s linear infinite; /*scrollRecensioni → nome dell’animazione definita nei @keyframes. 30s → la durata di un ciclo completo è di 30 secondi. linear → la velocità dell’animazione è costante (nessuna accelerazione o rallentamento). infinite → l’animazione si ripete all’infinito. */
 }
 
 .recensione-card {
   flex: 0 0 auto;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgb(189, 184, 184);
+  border-radius: 30px;
+  box-shadow: 5px 6px 0px rgba(0, 0, 0, 0.35);
   padding: 1.5rem;
-  margin: 0 1rem;
+  padding-bottom: 0.5rem;
+  margin: 0 1.5rem;
   min-width: 300px;
   max-width: 350px;
   transition: transform 0.3s ease;
@@ -289,10 +245,11 @@
 .recensione-card h3 {
   margin-top: 0;
   color: #c3ac00;
+  font-size: 2rem;
 }
 
 .recensione-card p {
-  color: #555;
+  color: #393939;
   font-size: 1rem;
 }
 
@@ -306,7 +263,7 @@
 }
 
 .recensioni-slider:hover .recensioni-track {
-  animation-play-state: paused;
+  animation-play-state: paused; /* ferma l'animazione durante l'hover */
 }
 
 .recensioni-track {
@@ -316,15 +273,14 @@
 .star-rating {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .stars {
   position: relative;
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #ccc;
   line-height: 1;
 }
@@ -349,8 +305,47 @@
 }
 
 .rating-value {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #333;
+}
+
+.recensioni-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.recensioni-button-container button {
+  margin-top: 3rem;
+}
+
+
+/* Responsive layout for recensioni-section on small screens */
+@media (max-width: 768px) {
+  .recensioni-container {
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center;
+    overflow-x: visible;
+  }
+
+  .recensione-card {
+    min-width: 90% !important;
+    max-width: 90% !important;
+    margin: 1rem 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .recensioni-track {
+    flex-direction: column;
+    animation: none !important;
+    width: 100% !important;
+  }
+
+  .recensioni-slider {
+    overflow: visible !important;
+  }
 }
 
 .site-footer {

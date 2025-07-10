@@ -1,0 +1,35 @@
+<div class="filter-bar">
+  <select
+    name="categories"
+    [(ngModel)]="selectedCategoria"
+    (change)="filtraContenuti()"
+  >
+    <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+  </select>
+
+  <select
+    name="subjects"
+    [(ngModel)]="selectedMateria"
+    (change)="filtraContenuti()"
+  >
+    <option *ngFor="let subj of subjects" [value]="subj">{{ subj }}</option>
+  </select>
+  <select
+    name="levels"
+    [(ngModel)]="selectedLivello"
+    (change)="filtraContenuti()"
+  >
+    <option *ngFor="let lvl of levels" [value]="lvl">{{ lvl }}</option>
+  </select>
+  <!--Questo collega l’input alla variabile keyword e attiva la funzione filtraContenuti() quando premi Invio-->
+  <div class="input-button-group">
+    <input
+      type="text"
+      name="contenuti"
+      placeholder="Cerca contenuti..."
+      [(ngModel)]="keyword"
+      (ngModelChange)="onKeywordChange($event)"
+    />
+    <button class="cerca" (click)="filtraContenuti()">Cerca</button>
+  </div>
+</div>

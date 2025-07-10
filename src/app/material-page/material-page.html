@@ -1,0 +1,37 @@
+<div class="page-materiale">
+  <div class="page-wrapper">
+    <!-- Contenuto principale della pagina -->
+    <!--Hero section con lezione in evidenza-->
+    <div class="hero-section">
+      <app-hero-box [lesson]="featuredLesson"></app-hero-box>
+    </div>
+    <!--Titolo e presentazione pagina-->
+    <div class="presentazione-section">
+      <h1>🎆 Migliora il Tuo Apprendimento 🎆</h1>
+      <h3>
+        Sfoglia il nostro catalogo di video lezioni, appunti o posts per trovare
+        il contenuto più adatto a te!
+      </h3>
+      <h5>
+        Seleziona il formato, la materia ed il tuo livello scolastico per
+        contenuti mirati e specifici
+      </h5>
+    </div>
+    <!--Filtro recupero lezioni-->
+    <app-filter-bar
+      [contenuti]="tuttiIContenuti"
+      (contenutiFiltratiChange)="aggiornaContenuti($event)"
+    ></app-filter-bar>
+    <!--Card con lezioni filtrate-->
+    <div class="content-grid" [ngClass]="{ 'sfocata': isSfocata }">
+      <app-content-card *ngFor="let item of contenutiFiltrati" [content]="item">
+      </app-content-card>
+    </div>
+    <!--Bottone per il login/registrazion-->
+    <div class="bottone-container" *ngIf="isSfocata">
+      <button class="btn btn-lg">Accedi per visualizzare il contenuto</button>
+    </div>
+  </div>
+  <!--Footer fisso-->
+  <app-promo-banner></app-promo-banner>
+</div>
