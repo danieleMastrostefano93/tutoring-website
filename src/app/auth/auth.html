@@ -1,0 +1,21 @@
+<div class="auth-container">
+  <h2>{{ isLoginMode ? 'Login' : 'Registrati' }}</h2>
+
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div class="registration-fields" *ngIf="!isLoginMode">
+      <input formControlName="nome" placeholder="Nome" />
+      <input formControlName="cognome" placeholder="Cognome" />
+      <input formControlName="telefono" placeholder="Telefono" />
+    </div>
+    <input formControlName="email" placeholder="Email" type="email" />
+    <input formControlName="password" placeholder="Password" type="password" />
+    <button type="submit">{{ isLoginMode ? 'Accedi' : 'Registrati' }}</button>
+  </form>
+
+  <p>
+    {{ isLoginMode ? 'Non hai un account? ' : 'Hai già un account? ' }}
+    <a (click)="toggleMode()" class="highlight-link">
+      {{ isLoginMode ? 'Registrati' : 'Accedi' }}
+    </a>
+  </p>
+</div>

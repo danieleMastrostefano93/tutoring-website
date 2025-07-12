@@ -22,16 +22,20 @@
       [contenuti]="tuttiIContenuti"
       (contenutiFiltratiChange)="aggiornaContenuti($event)"
     ></app-filter-bar>
+
     <!--Card con lezioni filtrate-->
-    <div class="content-grid" [ngClass]="{ 'sfocata': isSfocata }">
+    <div class="content-grid" [ngClass]="{ 'sfocata': !isLoggedIn }">
       <app-content-card *ngFor="let item of contenutiFiltrati" [content]="item">
       </app-content-card>
     </div>
+
     <!--Bottone per il login/registrazion-->
-    <div class="bottone-container" *ngIf="isSfocata">
-      <button class="btn btn-lg">Accedi per visualizzare il contenuto</button>
+    <div class="bottone-container" *ngIf="!isLoggedIn">
+      <button [routerLink]="['/auth']" class="btn btn-lg">
+        Accedi per visualizzare il contenuto
+      </button>
     </div>
+    <!--Footer fisso-->
+    <app-promo-banner></app-promo-banner>
   </div>
-  <!--Footer fisso-->
-  <app-promo-banner></app-promo-banner>
 </div>

@@ -1,4 +1,4 @@
-<div class="card" (mouseenter)="incrementViews()">
+<div class="card">
   <div class="icon">{{ content.icona }}</div>
   <h3>{{ content.titolo }}</h3>
   <p>{{ content.descrizione }}</p>
@@ -10,7 +10,7 @@
   <div class="actions">
     <button
       *ngIf="content.categoria === 'Video' && videoInRiproduzione !== content.url"
-      (click)="playVideo(content.url)"
+      (click)="playVideo(content.url, content.id)"
     >
       Guarda
     </button>

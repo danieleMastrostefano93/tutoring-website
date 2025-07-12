@@ -6,6 +6,7 @@ import { ReviewForm } from '../app/review-form/review-form';
 import { Contatti } from './contatti/contatti';
 import { Info } from './info/info';
 import { TutteRecensioni } from './tutte-recensioni/tutte-recensioni';
+import { Auth } from './auth/auth';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,4 +16,5 @@ export const routes: Routes = [
   { path: 'contatti', component: Contatti },
   { path: 'info', component: Info },
   { path: 'tutte-recensioni', component: TutteRecensioni },
+  { path: 'auth', component: Auth },
 ];

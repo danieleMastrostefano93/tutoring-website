@@ -21,6 +21,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
 import { provideHttpClient } from '@angular/common/http';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 //import { getAnalytics } from 'firebase/analytics';
 //import { provideAnalytics } from '@angular/fire/analytics';
@@ -52,6 +53,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, inMemoryScrollingFeature),
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
+    provideAuth(() => getAuth()),
     importProvidersFrom(OverlayModule), // solo moduli qui
 
     provideFirebaseApp(() => {

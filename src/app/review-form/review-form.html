@@ -1,40 +1,38 @@
-<div class="form-wrapper">
-  <div class="review-container" *ngIf="!submitted">
-    <h2>Lascia la tua recensione ✨</h2>
+<div class="review-container" *ngIf="!submitted">
+  <h2>Lascia la tua recensione ✨</h2>
 
-    <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
-      <input
-        type="text"
-        name="name"
-        [(ngModel)]="review.name"
-        placeholder="Il tuo nome (opzionale)"
-      />
+  <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="review.name"
+      placeholder="Il tuo nome (opzionale)"
+    />
 
-      <div class="stars-to-select">
-        <ng-container *ngFor="let star of [1,2,3,4,5]">
-          <span
-            class="star-to-select"
-            [class.filled]="star <= review.rating"
-            [class.hovered]="star <= hoveredRating"
-            (click)="setRating(star)"
-            (mouseenter)="setHoveredRating(star)"
-            (mouseleave)="clearHoveredRating()"
-            >★</span
-          >
-        </ng-container>
-      </div>
+    <div class="stars-to-select">
+      <ng-container *ngFor="let star of [1,2,3,4,5]">
+        <span
+          class="star-to-select"
+          [class.filled]="star <= review.rating"
+          [class.hovered]="star <= hoveredRating"
+          (click)="setRating(star)"
+          (mouseenter)="setHoveredRating(star)"
+          (mouseleave)="clearHoveredRating()"
+          >★</span
+        >
+      </ng-container>
+    </div>
 
-      <textarea
-        name="text"
-        [(ngModel)]="review.comment"
-        placeholder="Scrivi la tua recensione... (max 150 caratteri)"
-        rows="4"
-        maxlength="150"
-      ></textarea>
+    <textarea
+      name="text"
+      [(ngModel)]="review.comment"
+      placeholder="Scrivi la tua recensione... (max 150 caratteri)"
+      rows="4"
+      maxlength="150"
+    ></textarea>
 
-      <button type="submit">Invia Recensione</button>
-    </form>
-  </div>
+    <button type="submit">Invia Recensione</button>
+  </form>
 </div>
 
 <div class="thank-you" *ngIf="submitted">
