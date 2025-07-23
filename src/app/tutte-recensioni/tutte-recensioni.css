@@ -11,12 +11,12 @@
   text-align: center;
   width: 100%;
   font-size: 3rem;
-  color: #ffffff;
+  color: #f2f2f2;
   padding: 2rem;
 }
 
 .contenitore-bianco {
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   padding: 0.5rem;
   margin: 4rem auto;
   border-radius: 4px;
@@ -27,7 +27,7 @@
 
 .box-recensioni {
   background-color: #ad8d6e;
-  color: #ffffff;
+  color: #f2f2f2;
   padding: 4rem;
   padding-top: 1.5rem;
   padding-bottom: 2rem;
@@ -52,7 +52,7 @@
 
   .scrivi-btn {
     background-color: #ff6d12;
-    color: #ffffff;
+    color: white;
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: 4px;
@@ -61,6 +61,7 @@
 
     &:hover {
       background-color: #ec9112;
+      transition: 0.3s ease;
     }
   }
 }
@@ -74,7 +75,6 @@
 
 .card-blu {
   background-color: #252a2f;
-  color: #ffffff;
   padding: 1.5rem;
   border-radius: 4px;
 
@@ -89,19 +89,9 @@
     color: #ff6200;
   }
 
-  .dettagli {
-    font-size: 0.9rem;
-    color: #cccccc;
-    margin-bottom: 0.5rem;
-
-    span {
-      margin-right: 1rem;
-    }
-  }
-
   .commento {
     font-style: italic;
-    color: #eeeeee;
+    color: #f2f2f2;
   }
 }
 

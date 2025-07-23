@@ -33,14 +33,9 @@
         definiremo gli obiettivi e costruiremo un piano pensato, non solo per
         ottenere risultati immediati, ma anche per lasciare qualcosa che duri
         nel tempo. <br />
-        Sono disponibile per recupero materie e preparazione esami scolastici,
-        test d'ingresso universitari, certificazioni, formazione per le
-        olimpiadi, ripassi estivi e molto altro ancora. <br />
         Il mio metodo, flessibile e mirato, è adatto a tutti, ed ho lavorato con
-        successo anche con studenti con DSA, dislessia, discalculia e altri
-        disturbi specifici dell'apprendimento. <br />
-        Non perdere ulteriore tempo! Clicca qui sotto per scoprire di più su di
-        me ed iniziare questa nuova avventura insieme.
+        successo anche con studenti con dislessia, discalculia e altri disturbi
+        specifici dell'apprendimento.
       </p>
       <div class="mt-4">
         <a routerLink="/info" routerLinkActive="active" class="btn btn-lg"
@@ -54,13 +49,20 @@
 <!--Punteggio recensioni-->
 <section class="recensioni-section">
   <h2>Cosa Dicono del Nostro Servizio</h2>
-  <div class="star-rating">
+  <div
+    class="star-rating"
+    *ngIf="mediaRating !== undefined && mediaRating!== 0"
+  >
     <div class="stars">
       <div class="filled-stars" [style.width.%]="(mediaRating / 5) * 100"></div>
     </div>
-    <span class="rating-value" *ngIf="mediaRating !== undefined"
-      >{{ mediaRating.toFixed(2) }}/5</span
-    >
+    <span class="rating-value">{{ mediaRating.toFixed(2) }}/5</span>
+  </div>
+  <div
+    class="empty-recensioni"
+    *ngIf="mediaRating== undefined || mediaRating == 0"
+  >
+    <h3>(Ancora nessuna recensione)</h3>
   </div>
 
   <!--Recensioni in rilievo-->

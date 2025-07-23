@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Sezione descrizione + foto */
 .intro-section {
   background-color: #b3a1be;
@@ -24,6 +30,7 @@
 .intro-text {
   padding-right: 8rem;
   line-height: 1.5;
+  font-family: Arial, sans-serif;
 }
 
 .intro-text p {
@@ -128,4 +135,30 @@
   height: 1rem;
   background-color: #00796b;
   border-radius: 50%;
+}
+
+.intro-section,
+.experience-section {
+  flex-shrink: 0;
+}
+
+.footer-navigazione {
+  margin-top: auto;
+  padding: 1rem 1rem;
+  padding-bottom: 0rem;
+  background-color: #f2f2f2;
+  border-top: 1px solid black;
+  text-align: center;
+  color: #333;
+}
+
+.link-evidenziato {
+  color: #d4af37; /* oro */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-evidenziato:hover {
+  text-decoration: underline;
+  color: #b8860b;
 }

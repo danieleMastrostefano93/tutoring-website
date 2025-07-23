@@ -1,5 +1,6 @@
+<canvas #confettiCanvas class="confetti-canvas"></canvas>
 <div class="review-container" *ngIf="!submitted">
-  <h2>Lascia la tua recensione ✨</h2>
+  <h2>Lascia la Tua Recensione ✨</h2>
 
   <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
     <input
@@ -38,4 +39,9 @@
 <div class="thank-you" *ngIf="submitted">
   <h3>🎉 Grazie per la tua recensione!</h3>
   <p>Ci aiuti a migliorare ogni giorno 💬</p>
+  <img
+    src="../../assets/leonardo-di-caprio.gif"
+    alt="gif"
+    class="thank-you-gif"
+  />
 </div>

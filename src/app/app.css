@@ -1,6 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 .bg-seppia-custom {
-  background-color: #f4e1c1;
-  color: #5a3e1b;
+  background-color: #f8ddaf;
 }
 
 /* note that body is not present directly in app component but in its parent index.html */
@@ -13,6 +14,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000; /* A higher z-index means the element will appear on top of elements with a lower z-index. Only works on elements with a positioning context */
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -21,37 +23,38 @@ body {
 
 .navbar-brand {
   font-size: 1.5rem;
-  color: #5a3e1b;
+  color: #563701e5;
 }
 
 .nav-link {
+  font-size: 1rem;
   margin-left: 1rem;
   font-weight: 500; /* sets the thickness (or boldness) of the text to a medium weight (normal is 400, bold is 700) */
-  color: #5a3e1b !important; /* !important: is used to force a style rule to override any other conflicting rules, regardless of specificity or source order */
+  color: #563701e5 !important; /* !important: is used to force a style rule to override any other conflicting rules, regardless of specificity or source order */
 }
 
 .nav-link:hover {
-  background-color: rgba(138, 94, 60, 0.1); /* leggero highlight */
-  color: #8b5e3c !important; /* colore in evidenza */
+  background-color: rgba(138, 94, 60, 0.211); /* leggero highlight */
   transition: background-color 0.3s ease, color 0.3s ease;
   border-radius: 5px;
 }
 
 .navbar-nav .nav-link.active {
-  color: #8b5e3c !important;
+  color: #563701e5 !important;
   font-weight: bold;
 }
 
 /* Sidebar mobile */
 .sidebar {
   position: fixed;
-  top: 56px;
+  top: 62px;
   left: -250px;
-  width: 250px;
+  width: 200px;
   height: 100%;
-  background-color: #383333;
+  background-color: #ffdaa3d1;
   transition: left 0.3s ease;
   z-index: 1050;
+  border: none;
 }
 
 .sidebar.open {
@@ -61,4 +64,10 @@ body {
 .sidebar .nav-link {
   font-size: 1.2rem;
   padding: 0.75rem 1rem;
+}
+
+.sidebar .nav-link:hover {
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
 }

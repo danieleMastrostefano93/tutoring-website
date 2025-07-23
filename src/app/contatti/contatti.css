@@ -1,14 +1,14 @@
 .contact-title-section {
   padding: 1rem;
+  color: #333;
 }
 
 .contact-title {
   font-family: "Gloria Hallelujah", cursive;
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  color: #222;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
   text-shadow: 2px 2px 4px rgba(42, 39, 39, 1);
   text-decoration: underline;
 }
@@ -16,13 +16,27 @@
 .contact-subtitle {
   text-align: center;
   font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Times New Roman", serif;
+}
+
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 3rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.25rem;
+  }
 }
 
 .contact-section {
   display: flex;
   justify-content: center;
   padding: 4rem;
+  padding-top: 1rem;
   background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
 }
 
 .contact-form {
@@ -47,6 +61,12 @@
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border: 2px solid black; /* oppure il colore che preferisci */
+    box-shadow: 0 0 5px black;
+  }
 }
 
 .contact-form textarea {
