@@ -1,15 +1,17 @@
 .icon {
-  font-size: 1.5rem;
-  color: #ff5722;
+  font-size: 3rem;
+  color: #333;
   margin-bottom: 0.5rem;
 }
 
 .offer-banner {
   background: linear-gradient(135deg, #ff3b30, #ffd60a);
   color: white;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
+  width: 70%;
+  margin: 1rem auto;
+  box-shadow: 10px 10px 20px rgba(255, 59, 48, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +21,8 @@
 }
 
 .offer {
-  padding: 4rem;
+  padding: 2rem;
+  margin-top: 1rem;
 }
 
 .offer-title {
@@ -27,23 +30,22 @@
   font-weight: 800;
   font-size: 2rem;
   margin: 0;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px #000;
+  text-shadow: 1px 2px 4px black;
 }
 
 .offer-description {
   font-family: "Inter", sans-serif;
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
 }
 
 .offer-badge {
-  background-color: #007aff;
+  background-color: #007bff;
   color: white;
   font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-top: 1rem;
   display: inline-block;
   box-shadow: 0 0 10px #007aff;
@@ -68,13 +70,55 @@
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@media (max-width: 768px) {
+  .offer {
+    margin-top: 0rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .offer-banner {
+    width: 100%;
+  }
+
+  .offer-title {
+    font-size: 0.9rem;
+  }
+
+  .offer-description {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .offer-badge {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 550px) {
+  .offer-title {
+    font-size: 2rem;
+  }
+
+  .offer-description {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 549px) and (min-width: 450px) {
+  .offer-title {
+    font-size: 1.5rem;
+  }
+
+  .offer-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 449px) and (min-width: 400px) {
+  .offer-title {
+    font-size: 1.25rem;
+  }
+
+  .offer-description {
+    font-size: 0.75rem;
   }
 }

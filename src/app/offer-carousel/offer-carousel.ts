@@ -9,5 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './offer-carousel.css',
 })
 export class OfferCarousel {
-  @Input() offers!: { title: string; description: string; iconClass: string }[];
+  @Input() offers!: {
+    title: string;
+    description: string;
+    iconClass: string;
+    badge: string;
+  }[];
 }

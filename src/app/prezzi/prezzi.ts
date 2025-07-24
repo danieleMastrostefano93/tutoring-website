@@ -14,62 +14,63 @@ import { Faq } from '../faq/faq';
 export class Prezzi {
   plans = [
     {
-      name: 'Base',
-      price: '€29',
-      description: 'Ideale per chi inizia',
-      features: [
-        '2 ore di tutoraggio',
-        'Supporto via email',
-        'Accesso alla piattaforma',
-      ],
+      name: 'Basic',
+      price: '€25',
+      description: 'Lezione singola, ideale per chi inizia:',
+      features: ['1 ora di tutoraggio'],
     },
     {
-      name: 'Avanzato',
-      price: '€59',
-      description: 'Per chi vuole migliorare',
-      features: [
-        '5 ore di tutoraggio',
-        'Supporto via chat',
-        'Materiale personalizzato',
-      ],
+      name: 'Standard',
+      price: '€112,5',
+      description: 'Più lezioni, per chi vuole migliorare e più supporto:',
+      features: ['Sconto del 10%', '5 ore di tutoraggio', 'Supporto via email'],
     },
     {
       name: 'Premium',
-      price: '€99',
-      description: 'Massima flessibilità e supporto',
+      price: '€200',
+      description:
+        'Pacchetto completo, per chi vuole massimi risultati e supporto:',
       features: [
+        'Sconto del 20%',
         '10 ore di tutoraggio',
-        'Supporto 24/7',
-        'Sessioni registrate',
+        'Supporto via email',
+        'Accesso a materiale personalizzato',
       ],
     },
   ];
 
   specialOffers = [
     {
-      title: 'Sconto Estate 20%',
-      description: 'Valido fino al 31 luglio',
-      iconClass: 'fas fa-fire',
+      title: 'Sconto Estate',
+      description: 'Valido fino al 31 Settembre',
+      iconClass: 'fa-solid fa-umbrella-beach',
+      badge: '-10%',
     },
     {
-      title: 'Porta un amico',
+      title: 'Porta un Amico',
       description: 'Entrambi ricevete 1 ora gratis',
       iconClass: 'fas fa-users',
+      badge: '-50%',
     },
   ];
 
   faqList = [
     {
       question: 'Posso cambiare piano in seguito?',
-      answer: 'Sì, puoi cambiare piano in qualsiasi momento.',
+      answer:
+        'Certo, puoi cambiarlo quando vuoi. Le nuove tariffe si applicheranno da quel momento in poi.',
     },
     {
       question: 'Come funziona il pagamento?',
-      answer: 'Accettiamo carte, PayPal e bonifico.',
+      answer: 'Può essere effettuato tramite bonifico istantaneo o PayPal.',
+    },
+    {
+      question: 'Quando avviene il pagamento?',
+      answer: "Deve essere effettuato all'inizio della lezione.",
     },
     {
       question: 'Cosa succede se cancello una lezione?',
-      answer: 'Puoi riprogrammarla senza costi aggiuntivi.',
+      answer: 'Nessun problema! Puoi riprogrammarla quando vuoi ;).',
     },
   ];
 }

@@ -1,9 +1,8 @@
 <div class="card">
-  <h3>{{ plan.name }}</h3>
+  <h3 [ngClass]="getClass(plan.name)">{{ plan.name }}</h3>
   <p class="price">{{ plan.price }}</p>
   <p class="text">{{ plan.description }}</p>
   <ul>
     <li *ngFor="let feature of plan.features">✔️ {{ feature }}</li>
   </ul>
-  <button>Scopri di più</button>
 </div>

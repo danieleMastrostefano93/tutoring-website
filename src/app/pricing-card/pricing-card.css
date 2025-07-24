@@ -1,22 +1,60 @@
 .card {
-    padding: 3rem;
-    padding-bottom: 0.5rem;
-    margin-top: 2rem;
+  flex: 1 1 300px; /* Cresce, si restringe, larghezza minima */
+  max-width: 350px;
+  border: 1px solid #ccc;
+  padding: 3rem 1rem;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 769px) and (max-width: 1125px) {
+  .card {
+   max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
 }
 
 .card h3 {
   text-align: center;
+  font-size: 1.75rem;
+}
+
+.plan-basic {
+  color: rgb(205, 127, 50);
+}
+
+.plan-standard {
+  color: silver;
+}
+
+.plan-premium {
+  color: gold;
 }
 
 .price {
-    text-align: center;
-    margin-bottom: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .price {
+    margin-bottom: 2rem;
+  }
 }
 
 .text {
-    text-align: left;
-}
-
-.card button {
-    margin-top: 2rem;
+  text-align: left;
 }
