@@ -1,3 +1,22 @@
+.presentazione-section {
+  text-align: center;
+  margin: 2rem 1rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    padding-bottom: 1rem;
+    font-size: 3.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+}
+
 .content-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -25,11 +44,6 @@
   pointer-events: auto; /* permette il clic sul bottone */
 }
 
-.hero-section {
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -39,7 +53,7 @@
 
 app-promo-banner {
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #f2f2f2;
   padding: 1rem;
   text-align: center;
   position: fixed; /* in modo che sia sempre visibile */
@@ -47,22 +61,82 @@ app-promo-banner {
   bottom: 0;
 }
 
+@media (min-width: 870px) and (max-width: 970px) {
+  .presentazione-section h1 {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .presentazione-section {
+    margin-bottom: 0rem;
+
+    h1 {
+      padding-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    h5 {
+      font-size: 0.95rem;
+    }
+  }
+
   .page-wrapper {
     padding-bottom: 100px;
   }
 
   app-promo-banner {
-    font-size: 0.9rem;
-    padding: 0.5rem;
+    font-size: 1rem;
+    padding: 1rem;
   }
 }
 
-.presentazione-section {
-  text-align: center;
-  margin: 2rem 1rem;
+@media (max-width: 550px) {
+  .presentazione-section {
+    margin-bottom: 0rem;
 
-  h1 {
-    padding-bottom: 2rem;
+    h1 {
+      padding-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    h5 {
+      font-size: 0.95rem;
+    }
+  }
+
+  app-promo-banner {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .presentazione-section {
+    margin-bottom: 0rem;
+
+    h1 {
+      padding-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    h5 {
+      font-size: 0.75rem;
+    }
+  }
+
+  app-promo-banner {
+    font-size: 0.75rem;
   }
 }

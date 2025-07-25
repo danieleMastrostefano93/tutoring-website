@@ -4,27 +4,14 @@
   justify-content: space-evenly;
   padding: 1rem 0;
   background: #742222;
+  width: 95%;
+  margin: 1rem auto;
 
   select,
   input {
     padding: 0.5rem;
     border-radius: 6px;
     border: 2px solid black;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .filter-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .filter-bar select,
-  .filter-bar input {
-    width: 60%;
-    margin: 0.5rem 0;
   }
 }
 
@@ -42,7 +29,7 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: 2px solid black;
-  background-color: #fff;
+  background-color: white;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -58,12 +45,27 @@
   gap: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 30%;
+
+    select,
+    input {
+      font-size: 0.9rem;
+      width: 80%;
+      margin: 0.5rem 0;
+    }
+  }
+
   .input-button-group {
     flex-direction: column;
     align-items: stretch;
-    width: 60%;
-    margin: 0.5rem auto;
+    width: 80%;
+    margin: 0rem auto;
+    margin-bottom: 0.5rem;
   }
 
   .input-button-group input {
@@ -72,5 +74,38 @@
 
   .input-button-group .cerca {
     width: 50%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .filter-bar {
+    gap: 0.5rem;
+    width: 40%;
+
+    select,
+    input {
+      font-size: 0.7rem;
+    }
+  }
+
+  .input-button-group .cerca {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .filter-bar {
+    gap: 0rem;
+    width: 50%;
+
+    select,
+    input {
+      font-size: 0.7rem;
+    }
+  }
+
+  .input-button-group .cerca {
+    font-size: 0.7rem;
   }
 }

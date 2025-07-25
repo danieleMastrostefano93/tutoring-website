@@ -1,4 +1,7 @@
 <div class="success-popup">
   <h3>Complimenti!</h3>
-  <p>Hai inviato correttamente i tuoi dati.</p>
+  <p>{{ message }}</p>
+  <button *ngIf="showButton" routerLink="/materiale" class="popup-button">
+    Torna alla sezione Materiale
+  </button>
 </div>

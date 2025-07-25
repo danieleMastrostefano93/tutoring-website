@@ -15,10 +15,10 @@ export class FilterBar implements OnInit {
   @Output() contenutiFiltratiChange = new EventEmitter<any[]>();
 
   // Dati e selezioni
-  categories = ['Formato', 'Video', 'Appunti', 'Blog Post'];
+  categories = ['Formato', 'Video', 'Appunti'];
   subjects = ['Materia', 'Matematica', 'Fisica'];
   levels = [
-    'Indirizzo Scolastico',
+    'Indirizzo',
     'Elementari',
     'Medie',
     'Superiori',
@@ -30,7 +30,7 @@ export class FilterBar implements OnInit {
   //Qui sotto i valori di Default
   selectedCategoria: string = 'Formato';
   selectedMateria: string = 'Materia';
-  selectedLivello: string = 'Indirizzo Scolastico';
+  selectedLivello: string = 'Indirizzo';
   keyword: string = '';
 
   constructor(private http: HttpClient) {}
@@ -54,7 +54,7 @@ export class FilterBar implements OnInit {
           c.categoria === this.selectedCategoria) &&
         (this.selectedMateria === 'Materia' ||
           c.materia === this.selectedMateria) &&
-        (this.selectedLivello === 'Indirizzo Scolastico' ||
+        (this.selectedLivello === 'Indirizzo' ||
           c.livello === this.selectedLivello) &&
         (!chiave || // se la keyword è vuota, ignora la ricerca testuale
           Object.values(c).some(

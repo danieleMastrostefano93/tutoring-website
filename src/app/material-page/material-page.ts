@@ -27,7 +27,6 @@ export class MaterialPage implements OnInit {
 
   featuredLesson = {
     title: "Come affrontare un'espressione complessa",
-    duration: '5 min',
     videoUrl: 'assets/MathTestVideo.mp4',
   };
 

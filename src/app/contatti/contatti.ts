@@ -84,7 +84,10 @@ export class Contatti {
         formData
       );
       form.resetForm(); // Pulisce tutti i campi e resetta lo stato del form (metodo fornito da ngForm)
-      this.successPopupService.showSuccessMessage();
+      this.successPopupService.setShowButton(false);
+      this.successPopupService.showSuccessMessage(
+        'I tuoi dati sono stati inviati con successo.'
+      );
     } catch (error) {
       console.error('Errore nel salvataggio:', error);
       console.log(formData);
