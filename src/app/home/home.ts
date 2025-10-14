@@ -5,20 +5,20 @@ interface Recensione {
   comment: string;
 }
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
 export class Home implements OnInit {
   recensioni$!: Observable<Recensione[]>;
@@ -31,7 +31,7 @@ export class Home implements OnInit {
 
   constructor(
     private firestore: Firestore,
-    private router: Router,
+    @Inject(Router) private router: Router,
     private authService: AuthService
   ) {
     this.calculateStars();

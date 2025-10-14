@@ -11,6 +11,7 @@ import { Timestamp } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Inject } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class TutteRecensioni implements OnInit {
 
   constructor(
     private firestore: Firestore,
-    private router: Router,
+    @Inject(Router) private router: Router,
     private authService: AuthService
   ) {}
 

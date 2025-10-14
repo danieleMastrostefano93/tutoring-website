@@ -24,7 +24,7 @@ export class ReviewForm implements OnDestroy {
   confettiCanvas!: ElementRef<HTMLCanvasElement>;
 
   constructor(
-    private firestore: Firestore,
+  private firestore: Firestore,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
   ) {}

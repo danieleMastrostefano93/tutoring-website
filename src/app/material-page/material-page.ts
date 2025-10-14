@@ -1,23 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ContentCard } from '../content-card/content-card';
 import { HeroBox } from '../hero-box/hero-box';
 import { FilterBar } from '../filter-bar/filter-bar';
 import { PromoBanner } from '../promo-banner/promo-banner';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-material-page',
   standalone: true,
   imports: [
-    ContentCard,
-    HeroBox,
-    FilterBar,
-    PromoBanner,
-    CommonModule,
-    RouterModule,
+    CommonModule
   ],
   templateUrl: './material-page.html',
   styleUrl: './material-page.css',
@@ -33,7 +28,11 @@ export class MaterialPage implements OnInit {
   tuttiIContenuti: any[] = [];
   contenutiFiltrati: any[] = [];
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(Router) private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
