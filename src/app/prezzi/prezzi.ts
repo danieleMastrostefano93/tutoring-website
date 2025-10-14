@@ -40,10 +40,16 @@ export class Prezzi {
   ];
 
   specialOffers = [
+    // {
+    //   title: 'Sconto Estate',
+    //   description: 'Valido fino al 31 Settembre',
+    //   iconClass: 'fa-solid fa-umbrella-beach',
+    //   badge: '-10%',
+    // },
     {
-      title: 'Sconto Estate',
-      description: 'Valido fino al 31 Settembre',
-      iconClass: 'fa-solid fa-umbrella-beach',
+      title: 'Promo Halloween',
+      description: 'Valida fino al 31 Ottobre',
+      iconClass: 'fa-solid fa-ghost',
       badge: '-10%',
     },
     {

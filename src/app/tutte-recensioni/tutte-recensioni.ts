@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   Firestore,
@@ -11,6 +11,7 @@ import { Timestamp } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-tutte-recensioni',
@@ -20,16 +21,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./tutte-recensioni.css'],
 })
 export class TutteRecensioni implements OnInit {
-  private firestore = inject(Firestore);
+  isLoggedIn = false;
   recensioni$!: Observable<any[]>;
   filtro: string = 'data_desc';
   totaleRecensioni: number = 0;
   mediaPunteggio: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private firestore: Firestore,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    this.caricaRecensioni();
+    this.authService.isLoggedIn$.subscribe((status) => {
+      this.isLoggedIn = status;
+      if (status) {
+        this.caricaRecensioni();
+      } else {
+        this.recensioni$ = undefined!;
+        this.totaleRecensioni = 0;
+        this.mediaPunteggio = 0;
+      }
+    });
   }
 
   caricaRecensioni() {

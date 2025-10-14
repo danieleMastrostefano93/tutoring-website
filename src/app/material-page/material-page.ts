@@ -36,10 +36,12 @@ export class MaterialPage implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {
-    this.http.get<any[]>('assets/contenuti.json').subscribe((data) => {
-      this.tuttiIContenuti = data;
-      this.contenutiFiltrati = data;
-    });
+    if (typeof window !== 'undefined') {
+      this.http.get<any[]>('assets/contenuti.json').subscribe((data) => {
+        this.tuttiIContenuti = data;
+        this.contenutiFiltrati = data;
+      });
+    }
 
     this.authService.isLoggedIn$.subscribe((status) => {
       this.isLoggedIn = status;

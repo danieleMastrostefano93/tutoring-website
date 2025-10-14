@@ -5,19 +5,20 @@
 }
 
 .offer-banner {
-  background: linear-gradient(135deg, #ff3b30, #ffd60a);
-  color: white;
+  background: linear-gradient(135deg, #888fb7 50%, #2b5da2 100%);
+  color: #e0e6f7;
   padding: 1rem;
   border-radius: 1rem;
   width: 70%;
   margin: 1rem auto;
-  box-shadow: 10px 10px 20px rgba(255, 59, 48, 1);
+  box-shadow: 0 0 30px 10px #3a7bd5, 0 0 60px 10px #232b60 inset;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeInUp 1s ease-out;
   position: relative;
   overflow: hidden;
+  border: 2px solid #5e7cff;
 }
 
 .offer {
@@ -30,7 +31,9 @@
   font-weight: 800;
   font-size: 2rem;
   margin: 0;
-  text-shadow: 1px 2px 4px black;
+  text-shadow: 0 0 8px #5e7cff, 0 0 2px #000;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 6px #3a7bd5);
 }
 
 .offer-description {
@@ -40,15 +43,41 @@
 }
 
 .offer-badge {
-  background-color: #007bff;
-  color: white;
+  background-color: #232b60;
+  color: #ffb347;
   font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 999px;
   font-size: 1.25rem;
   margin-top: 1rem;
   display: inline-block;
-  box-shadow: 0 0 10px #007aff;
+  box-shadow: 0 0 16px #3a7bd5, 0 0 8px #ffb347 inset;
+  border: 2px solid #5e7cff;
+  position: relative;
+}
+
+/* Dettagli spettrali extra */
+.offer-banner::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 60px;
+  background: radial-gradient(ellipse at center, #e0e6f7 60%, transparent 100%);
+  opacity: 0.15;
+  filter: blur(8px);
+  pointer-events: none;
+}
+.offer-banner::after {
+  content: "🎃";
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  font-size: 2.5rem;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .pulse {

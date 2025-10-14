@@ -7,8 +7,8 @@ import {
   getDoc,
   increment,
 } from '@angular/fire/firestore';
-import { inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-content-card',
@@ -24,20 +24,29 @@ export class ContentCard implements OnInit {
   downvotes = 0;
   views = 0;
   videoInRiproduzione: string | null = null;
+  isLoggedIn = false;
 
-  firestore: Firestore = inject(Firestore);
-  auth: Auth = inject(Auth);
+  constructor(
+    private firestore: Firestore,
+    private auth: Auth,
+    private authService: AuthService
+  ) {}
 
-  async ngOnInit() {
-    if (this.content?.id) {
-      const contentRef = doc(this.firestore, 'contenuti', this.content.id);
-      const contentSnap = await getDoc(contentRef);
+  ngOnInit() {
+    this.authService.isLoggedIn$.subscribe(async (status) => {
+      this.isLoggedIn = status;
+      if (status && this.content?.id) {
+        const contentRef = doc(this.firestore, 'contenuti', this.content.id);
+        const contentSnap = await getDoc(contentRef);
 
-      if (contentSnap.exists()) {
-        const data = contentSnap.data();
-        this.views = data['views'] || 0;
+        if (contentSnap.exists()) {
+          const data = contentSnap.data();
+          this.views = data['views'] || 0;
+        }
+      } else {
+        this.views = 0;
       }
-    }
+    });
   }
 
   async playVideo(url: string, contentId: string) {
