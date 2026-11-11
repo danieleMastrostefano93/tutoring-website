@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector, runInInjectionContext, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ErrorPopupService } from '../error-popup/error-popup.service';
@@ -14,11 +14,14 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 })
 export class Contatti {
   formErrors: string[] = [];
+  education = '';
+  readonly isSubmitting = signal(false);
 
   constructor(
     private successPopupService: SuccessPopupService,
     private errorPopupService: ErrorPopupService,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private injector: Injector
   ) {}
 
   validateEmail(email: string): boolean {
@@ -27,6 +30,8 @@ export class Contatti {
   }
 
   async onSubmit(form: NgForm) {
+    if (this.isSubmitting()) return;
+
     this.formErrors = [];
     const controls = form.controls;
 
@@ -78,10 +83,10 @@ export class Contatti {
       timestamp: new Date(),
     };
     // Eseguo la chiamata a firestore per aggiungere un documento nella collection
+    this.isSubmitting.set(true);
     try {
-      const docRef = await addDoc(
-        collection(this.firestore, 'Contatti'),
-        formData
+      await runInInjectionContext(this.injector, () =>
+        addDoc(collection(this.firestore, 'Contatti'), formData)
       );
       form.resetForm(); // Pulisce tutti i campi e resetta lo stato del form (metodo fornito da ngForm)
       this.successPopupService.setShowButton(false);
@@ -90,7 +95,11 @@ export class Contatti {
       );
     } catch (error) {
       console.error('Errore nel salvataggio:', error);
-      console.log(formData);
+      this.errorPopupService.showError(
+        'Non è stato possibile inviare il messaggio. Riprova tra poco.'
+      );
+    } finally {
+      this.isSubmitting.set(false);
     }
   }
 }
