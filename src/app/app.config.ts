@@ -8,10 +8,12 @@ import {
   InMemoryScrollingOptions,
   InMemoryScrollingFeature,
   withInMemoryScrolling,
+  TitleStrategy,
 } from '@angular/router';
 import { importProvidersFrom } from '@angular/core';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { routes } from './app.routes';
+import { SeoMetadataStrategy } from './seo-metadata-strategy';
 import {
   provideClientHydration,
   withEventReplay,
@@ -51,6 +53,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes, inMemoryScrollingFeature),
+    { provide: TitleStrategy, useClass: SeoMetadataStrategy },
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
     provideAuth(() => getAuth()),
