@@ -11,7 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Validate production configuration
+        env:
+          FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
+        run: test -n "$FIREBASE_API_KEY"
+      - run: npm run build
+        env:
+          PUBLIC_BACKEND: firebase
+          PUBLIC_FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
+          PUBLIC_FIREBASE_AUTH_DOMAIN: tutor-website-717e5.firebaseapp.com
+          PUBLIC_FIREBASE_PROJECT_ID: tutor-website-717e5
+          PUBLIC_FIREBASE_APP_ID: 1:870834974460:web:bce395908569695b33b179
+          SITE_URL: https://tutor-website-717e5.web.app
+          PRIVACY_URL: ${{ vars.PRIVACY_URL }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

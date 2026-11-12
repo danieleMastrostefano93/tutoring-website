@@ -1,0 +1,28 @@
+<section class="container section form-layout review-form-layout">
+  <div class="form-intro">
+    <a href="/tutte-recensioni/" class="text-link back-link"><span class="icon-arrow icon-arrow-back" aria-hidden="true"></span> Tutte le recensioni</a>
+    <h1>Come ti sei <em>trovato?</em></h1>
+    <p class="lead">Il tuo parere aiuta me a migliorare le lezioni e chi sta scegliendo un tutor a capire come lavoro.</p>
+    <p>La recensione comparirà sul sito dopo l’approvazione. Puoi firmarla con le tue iniziali.</p>
+  </div>
+  <form class="form-card" method="dialog" data-form="review">
+    <fieldset class="rating-field">
+      <legend>Valutazione</legend>
+      <div class="stars" aria-describedby="rating-value">
+        <label><input type="radio" name="rating" value="1" required><span class="star" aria-hidden="true"></span><span class="visually-hidden">1 stella</span></label>
+        <label><input type="radio" name="rating" value="2"><span class="star" aria-hidden="true"></span><span class="visually-hidden">2 stelle</span></label>
+        <label><input type="radio" name="rating" value="3"><span class="star" aria-hidden="true"></span><span class="visually-hidden">3 stelle</span></label>
+        <label><input type="radio" name="rating" value="4"><span class="star" aria-hidden="true"></span><span class="visually-hidden">4 stelle</span></label>
+        <label><input type="radio" name="rating" value="5"><span class="star" aria-hidden="true"></span><span class="visually-hidden">5 stelle</span></label>
+      </div>
+      <p id="rating-value" class="form-hint" aria-live="polite">Seleziona da 1 a 5 stelle.</p>
+    </fieldset>
+    <label class="field">La tua recensione
+      <textarea name="review" rows="4" maxlength="150" required placeholder="Che cosa ti è stato utile durante le lezioni?"></textarea>
+    </label>
+    <p class="form-hint text-right" id="review-length">0 / 150 caratteri</p>
+    <label class="field">Nome o iniziali <span class="optional">facoltativo</span><input name="name" type="text" maxlength="80" placeholder="Come vuoi firmarti?"></label>
+    <div class="actions"><button type="submit" class="button" disabled>Invia recensione <span class="icon-arrow" aria-hidden="true"></span></button></div>
+    <p class="form-result" role="status" hidden></p>
+  </form>
+</section>

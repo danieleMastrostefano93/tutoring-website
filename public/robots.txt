@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://tutor-website-717e5.web.app/sitemap.xml

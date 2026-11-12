@@ -1,0 +1,67 @@
+---
+import { mainNavigation, pages } from "../lib/site-data.js";
+import { isIndexable, siteOrigin } from "../lib/site-meta.js";
+import "../styles/site.css";
+
+const { page } = Astro.props;
+const meta = pages[page] || {
+  title: "Pagina non trovata",
+  description: "La pagina di TutorOnline che cerchi non è disponibile.",
+  noIndex: true
+};
+const activePage = page === "recensioni" ? "tutte-recensioni" : page;
+const title = `${meta.title} | TutorOnline`;
+const canonical = siteOrigin && meta.path ? new URL(meta.path, siteOrigin).href : undefined;
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google-site-verification" content="WNEshGnB0gq892JfCgK8uD47OeUiR6QRkMtwVmmSJwo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#29392f" />
+    <meta name="description" content={meta.description} />
+    {(!isIndexable || meta.noIndex) && <meta name="robots" content="noindex, follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={meta.description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {siteOrigin && <meta property="og:image" content={new URL("/assets/foto-profilo-960.webp", siteOrigin).href} />}
+    <link rel="icon" href="/assets/icona-sito.png" type="image/png" />
+    <link rel="preload" href="/assets/instrument-serif.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <aside class="announcement-bar" aria-label="Lezioni online">
+      <p class="container">Lezioni individuali online · Matematica, fisica e informatica</p>
+    </aside>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a href="/" class="wordmark" aria-label="TutorOnline, Home">
+          <span class="wordmark-icon" aria-hidden="true">∑</span>
+          <span>Tutor<span class="wordmark-accent">Online</span></span>
+        </a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span class="icon-menu" aria-hidden="true"></span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Pagine del sito">
+          {mainNavigation.map(id => (
+            <a href={pages[id].path} aria-current={activePage === id ? "page" : undefined}>{pages[id].label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="contenuto" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div><a class="footer-name" href="/">TutorOnline</a><p>Lezioni online con Daniele Mastrostefano</p></div>
+        <p class="footer-copyright">Sito web realizzato e gestito da me - Tutti i diritti sono riservati all'autore © 2026</p>
+      </div>
+    </footer>
+    <script>
+      import "../lib/site-client.js";
+    </script>
+  </body>
+</html>

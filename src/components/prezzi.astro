@@ -1,0 +1,39 @@
+---
+import { plans } from "../lib/site-data.js";
+---
+<section class="container section pricing-page">
+  <div class="page-intro">
+    <h1>Quanto costa <em>una lezione?</em></h1>
+    <p class="lead">Scegli il pacchetto più adatto a te e risparmia sul costo orario delle lezioni.</p>
+  </div>
+  <div class="pricing-grid">
+    {plans.map(plan => (
+      <section class="plan">
+        <h2>{plan.title}</h2>
+        <p class="plan-price">{plan.price} <span>€</span></p>
+        <p class="plan-unit">{plan.unit}</p>
+        <ul>{plan.benefits.map(benefit => <li>{benefit}</li>)}</ul>
+      </section>
+    ))}
+  </div>
+  <div class="pricing-contact">
+    <a class="button" href="/contatti/">
+      Contattami <span class="icon-arrow" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<section class="section faq-section">
+  <div class="container faq-layout">
+    <div>
+      <h2>Domande frequenti</h2>
+      <a href="/contatti/" class="text-link">Hai un’altra domanda? Scrivimi <span class="icon-arrow" aria-hidden="true"></span></a>
+    </div>
+    <div class="faq">
+      <details><summary>Come si svolge una lezione?</summary><p>Ci incontriamo online per una lezione individuale. Partiamo dal tuo obiettivo e lavoriamo con spiegazioni ed esercizi scelti per il tuo livello.</p></details>
+      <details><summary>Posso partire da una singola lezione?</summary><p>Sì. Puoi iniziare con un’ora e decidere in seguito se proseguire con un pacchetto.</p></details>
+      <details><summary>Come posso pagare?</summary><p>Puoi pagare con bonifico istantaneo, PayPal o Revolut. Per la lezione singola, il pagamento è previsto all’inizio della lezione.</p></details>
+      <details><summary>Se devo spostare una lezione?</summary><p>Scrivimi e concordiamo un altro orario.</p></details>
+    </div>
+  </div>
+</section>
