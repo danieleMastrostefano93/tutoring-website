@@ -24,6 +24,50 @@ document.addEventListener("keydown", event => {
 });
 window.addEventListener("pageshow", closeMenu);
 
+// Feedback delegato anche alle recensioni caricate dopo l'avvio della pagina.
+const touchFeedbackSelector = ".button, .menu-toggle, .text-link, .site-nav a, .stars label, .plan, .review-card";
+let touchFeedback;
+let touchPointer;
+let touchFeedbackTimer;
+
+function clearTouchFeedback() {
+  clearTimeout(touchFeedbackTimer);
+  touchFeedback?.classList.remove("is-touch-active");
+  touchFeedback = undefined;
+  touchPointer = undefined;
+}
+
+document.addEventListener("pointerdown", event => {
+  clearTouchFeedback();
+  if (!event.isPrimary || !["touch", "pen"].includes(event.pointerType)) return;
+  const target = event.target instanceof Element ? event.target.closest(touchFeedbackSelector) : null;
+  if (!target || target.matches(":disabled, [aria-disabled='true']")) return;
+  touchFeedback = target;
+  touchPointer = { id: event.pointerId, x: event.clientX, y: event.clientY };
+  target.classList.add("is-touch-active");
+}, { passive: true });
+
+document.addEventListener("pointermove", event => {
+  if (event.pointerId !== touchPointer?.id) return;
+  if (Math.hypot(event.clientX - touchPointer.x, event.clientY - touchPointer.y) > 10) clearTouchFeedback();
+}, { passive: true });
+
+document.addEventListener("pointerup", event => {
+  if (event.pointerId !== touchPointer?.id) return;
+  touchPointer = undefined;
+  // Il riflesso dei riquadri ha il tempo di completarsi anche dopo un tap veloce.
+  const duration = touchFeedback.matches(".plan, .review-card") ? 750 : 200;
+  touchFeedbackTimer = setTimeout(clearTouchFeedback, duration);
+}, { passive: true });
+
+document.addEventListener("pointercancel", event => {
+  if (event.pointerId === touchPointer?.id) clearTouchFeedback();
+}, { passive: true });
+document.addEventListener("scroll", clearTouchFeedback, { passive: true, capture: true });
+window.addEventListener("blur", clearTouchFeedback);
+window.addEventListener("pagehide", clearTouchFeedback);
+window.addEventListener("pageshow", clearTouchFeedback);
+
 class FormError extends Error {}
 
 function formText(data, name) {
