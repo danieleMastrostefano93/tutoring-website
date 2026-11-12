@@ -2,35 +2,80 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Autorizzazioni esistenti per le recensioni.
-    match /recensioni/{document=**} {
-      allow read, write: if true;
+    function exactFields(data, fields) {
+      return data.keys().hasAll(fields) && data.keys().hasOnly(fields);
     }
 
-    // Invio del form pubblico, anche senza autenticazione.
-    match /Contatti/{contactId} {
-      function validContact() {
-        let data = request.resource.data;
-        let fields = ['name', 'surname', 'email', 'phone',
-                      'education', 'message', 'timestamp'];
-        return data.keys().hasAll(fields)
-          && data.keys().hasOnly(fields)
-          && data.name is string && data.name.size() > 0
-          && data.surname is string && data.surname.size() > 0
-          && data.email is string && data.email.size() > 0
-          && data.phone is string && data.phone.matches('[0-9]{10,15}')
-          && data.education is string
+    function textBetween(value, min, max) {
+      return value is string && value.size() >= min && value.size() <= max;
+    }
+
+    function validPhone(value) {
+      return value is string && (value == '' || value.matches('[+]?[0-9]{7,15}'));
+    }
+
+    match /tutoronlineContacts/{id} {
+      allow create: if validContact(request.resource.data);
+
+      function validContact(data) {
+        return exactFields(data, ['name', 'email', 'education', 'phone', 'message', 'subject', 'plan', 'createdAt'])
+          && textBetween(data.name, 1, 80)
+          && textBetween(data.email, 3, 150)
+          && data.email.matches('[^ @]+@[^ @]+[.][^ @]+')
           && data.education in ['elementari', 'medie', 'superiori', 'universita', 'altro']
-          && data.message is string && data.message.size() > 0
-          && data.timestamp is timestamp;
+          && validPhone(data.phone)
+          && textBetween(data.message, 1, 1200)
+          && data.subject in ['', 'matematica', 'fisica', 'informatica']
+          && data.plan in ['', '1', '5', '10']
+          && data.createdAt == request.time;
       }
-
-      allow create: if validContact();
     }
 
-    // Accesso completo per gli utenti autenticati.
-    match /{document=**} {
-      allow read, write: if request.auth != null;
+    match /tutoronlineReviews/{id} {
+      allow get: if resource.data.status == 'approved';
+      allow list: if resource.data.status == 'approved' && request.query.limit <= 30;
+      allow create: if validPendingReview(request.resource.data);
+
+      function validPendingReview(data) {
+        return exactFields(data, ['name', 'rating', 'comment', 'status', 'createdAt'])
+          && textBetween(data.name, 0, 80)
+          && data.rating is int && data.rating >= 1 && data.rating <= 5
+          && textBetween(data.comment, 1, 150)
+          && data.status == 'pending'
+          && data.createdAt == request.time;
+      }
+    }
+    // Compatibilità con i moduli Angular durante il passaggio.
+    match /Contatti/{id} {
+      allow create: if exactFields(request.resource.data,
+          ['name', 'surname', 'email', 'phone', 'education', 'message', 'timestamp'])
+        && textBetween(request.resource.data.name, 1, 200)
+        && textBetween(request.resource.data.surname, 1, 200)
+        && textBetween(request.resource.data.email, 3, 320)
+        && request.resource.data.phone is string
+        && request.resource.data.phone.matches('[0-9]{10,15}')
+        && request.resource.data.education in ['elementari', 'medie', 'superiori', 'universita', 'altro']
+        && textBetween(request.resource.data.message, 1, 10000)
+        && request.resource.data.timestamp is timestamp;
+    }
+
+    match /recensioni/{id} {
+      allow read: if true;
+      allow create: if exactFields(request.resource.data, ['name', 'rating', 'comment', 'createdAt'])
+        && textBetween(request.resource.data.name, 0, 200)
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+        && textBetween(request.resource.data.comment, 1, 10000)
+        && request.resource.data.createdAt == request.time;
+    }
+
+    // I profili sono privati e accessibili soltanto al proprietario.
+    // Nessun permesso generale per utenti autenticati.
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    match /tutoronlineProfiles/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
     }
   }
 }

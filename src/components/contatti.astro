@@ -1,0 +1,38 @@
+---
+import { privacyUrl } from "../lib/privacy.js";
+import { levels } from "../lib/site-data.js";
+---
+<section class="container section form-layout contact-layout">
+  <div class="form-intro">
+    <h1><em>Scrivimi.</em></h1>
+    <p class="lead">Indicami la materia, il tuo obiettivo e se ti interessa una lezione singola o un pacchetto. Se non sai quale scegliere, lo valutiamo insieme. Puoi scrivermi anche per chiedere ulteriori informazioni.</p>
+    <div class="form-aside">
+      <h2>Dopo il tuo messaggio</h2>
+      <p>Ti rispondo via email per chiarire i tuoi dubbi e darti le informazioni che cerchi. Concordiamo insieme il percorso più adatto a te, gli orari e la prima lezione.</p>
+    </div>
+  </div>
+  <form class="form-card" method="dialog" data-form="contact">
+    <p class="selection" id="contact-selection" hidden></p>
+    <div class="field-grid">
+      <label class="field">Nome<input name="name" type="text" autocomplete="given-name" maxlength="80" required></label>
+      <label class="field">Email<input name="email" type="email" autocomplete="email" maxlength="150" required></label>
+    </div>
+    <label class="field">Livello scolastico
+      <select name="education" required>
+        <option value="" selected disabled>Scegli il livello</option>
+        {Object.entries(levels).map(([key, label]) => <option value={key}>{label}</option>)}
+      </select>
+    </label>
+    <label class="field">Come posso aiutarti?
+      <textarea id="contact-message" name="message" rows="4" maxlength="1200" required placeholder="Indicami la materia, il tuo obiettivo, il pacchetto che ti interessa e quando vorresti iniziare."></textarea>
+    </label>
+    <details class="phone-field"><summary>Aggiungi un telefono <span class="optional">facoltativo</span></summary>
+      <label class="field">Numero di telefono<input name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="+39"></label>
+    </details>
+    <p class="form-hint">Uso questi dati per rispondere alla tua richiesta e organizzare le lezioni. Il telefono è facoltativo. Leggi l’<a href={privacyUrl}>informativa privacy</a>.</p>
+    <div class="form-submit">
+      <button class="button" type="submit" disabled>Invia messaggio <span class="icon-arrow" aria-hidden="true"></span></button>
+    </div>
+    <p class="form-result" role="status" hidden></p>
+  </form>
+</section>

@@ -1,0 +1,22 @@
+---
+import Site from "../layouts/Site.astro";
+import Info from "../components/info.astro";
+import Prezzi from "../components/prezzi.astro";
+import Contatti from "../components/contatti.astro";
+import ReviewList from "../components/tutte-recensioni.astro";
+import ReviewForm from "../components/recensioni.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { page: "info" }, props: { Component: Info } },
+    { params: { page: "prezzi" }, props: { Component: Prezzi } },
+    { params: { page: "contatti" }, props: { Component: Contatti } },
+    { params: { page: "tutte-recensioni" }, props: { Component: ReviewList } },
+    { params: { page: "recensioni" }, props: { Component: ReviewForm } }
+  ];
+}
+const { Component } = Astro.props;
+---
+<Site page={Astro.params.page}>
+  <Component />
+</Site>

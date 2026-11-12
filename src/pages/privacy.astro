@@ -1,0 +1,44 @@
+---
+import Site from "../layouts/Site.astro";
+import { policy, privacyComplete } from "../lib/privacy.js";
+const pending = "Da completare prima della pubblicazione";
+---
+<Site page="privacy">
+  <article class="container section privacy-policy">
+    <h1>Informativa <em>privacy.</em></h1>
+    <p>Informazioni sul trattamento dei dati personali attraverso TutorOnline, ai sensi dell’articolo 13 del Regolamento (UE) 2016/679 (GDPR). Aggiornamento: 12 novembre 2026.</p>
+    {!privacyComplete && <p class="privacy-draft" role="note"><strong>Bozza per revisione.</strong> I dati del titolare, i recapiti e i tempi di conservazione devono essere confermati prima del rilascio pubblico.</p>}
+
+    <h2>Chi tratta i dati</h2>
+    <p>Il titolare del trattamento è {policy.controllerName}{!policy.controllerConfirmed && " (da confermare)"}. Indirizzo: {policy.controllerAddress || pending}.</p>
+    <p>Per le richieste relative ai tuoi dati: {policy.contactEmail ? <a href={`mailto:${policy.contactEmail}`}>{policy.contactEmail}</a> : pending}.</p>
+
+    <h2>Richieste di informazioni e lezioni</h2>
+    <p>Il modulo Contatti raccoglie nome, email, livello scolastico e messaggio, necessari per comprendere la richiesta e rispondere. Puoi aggiungere facoltativamente il telefono. Se arrivi dalle tariffe, il messaggio può includere la materia e il pacchetto selezionati. Sono registrati anche la data e l’ora dell’invio.</p>
+    <p>Questi dati servono a rispondere alle richieste e organizzare il percorso di lezioni, sulla base dell’esecuzione di misure precontrattuali richieste dall’interessato o del rapporto contrattuale (art. 6, par. 1, lett. b GDPR). Non vengono usati per newsletter o pubblicità. Se non fornisci i campi obbligatori non è possibile inviare il modulo; il telefono resta facoltativo.</p>
+    <p>I messaggi non sono pubblicati sul sito. Evita di inserire informazioni sanitarie, documenti o altri dati sensibili e dati di terzi non necessari. Se sei minorenne, coinvolgi un genitore o chi esercita la responsabilità genitoriale nella richiesta di lezioni.</p>
+
+    <h2>Recensioni e pubblicazione</h2>
+    <p>Il modulo Recensioni raccoglie il voto da 1 a 5, il commento, il nome o le iniziali facoltativi e la data e l’ora dell’invio. La recensione viene conservata inizialmente in attesa di moderazione. Solo le recensioni approvate vengono mostrate pubblicamente, con voto, commento e la firma eventualmente indicata; il sito legge le 30 approvate più recenti per mostrarle e calcolarne la media.</p>
+    <p>Il trattamento e la pubblicazione si basano sul consenso espresso nel modulo (art. 6, par. 1, lett. a GDPR). Puoi non inviare una recensione senza conseguenze sulle lezioni. Puoi ritirare il consenso e chiedere la rimozione scrivendo al recapito sopra indicato e fornendo elementi sufficienti a individuare la recensione. La revoca non pregiudica la liceità del trattamento precedente. Non includere dati sensibili o riferimenti a terzi; puoi non indicare il nome o usare soltanto le iniziali.</p>
+
+    <h2>Servizi tecnici, destinatari e trasferimenti</h2>
+    <p>Il sito usa Google Firebase Hosting per distribuire le pagine e Cloud Firestore per conservare messaggi e recensioni. Il titolare e gli eventuali soggetti autorizzati gestiscono questi dati; Google fornisce l’infrastruttura secondo le condizioni di trattamento applicabili. Le recensioni approvate sono accessibili a chi visita il sito; i messaggi Contatti non lo sono.</p>
+    <p>Per fornire e proteggere il servizio, l’infrastruttura può trattare dati di connessione, come indirizzo IP e informazioni tecniche sulle richieste, per il legittimo interesse al funzionamento e alla sicurezza del sito (art. 6, par. 1, lett. f GDPR). Il sito non offre registrazione o accesso account, non integra Google Analytics né strumenti pubblicitari e non utilizza cookie di profilazione nel codice applicativo. Font e immagini sono serviti dal sito. La configurazione di rilascio non attiva reCAPTCHA/App Check.</p>
+    <p>Configurazione dei fornitori, localizzazione dei dati, eventuali trasferimenti fuori dallo Spazio economico europeo e garanzie applicabili: {policy.providerDetails || pending}.</p>
+    <p>Puoi consultare le <a href="https://firebase.google.com/support/privacy">informazioni su privacy e sicurezza di Firebase</a> e le <a href="https://firebase.google.com/terms/data-processing-terms">condizioni di trattamento dei dati</a>. La localizzazione di Firestore non esclude da sola trattamenti tecnici in altri paesi.</p>
+
+    <h2>Per quanto tempo</h2>
+    <ul>
+      <li>Richieste Contatti e relative risposte: {policy.contactRetention || pending}.</li>
+      <li>Recensioni in attesa o non approvate: {policy.pendingReviewRetention || pending}.</li>
+      <li>Recensioni pubblicate: {policy.publishedReviewRetention || pending}.</li>
+      <li>Dati tecnici, log ed eventuali copie di backup: {policy.technicalRetention || pending}.</li>
+    </ul>
+    <p>Le richieste relative a un eventuale rapporto di lezioni possono richiedere conservazioni ulteriori previste dalla legge o necessarie per la tutela di un diritto; i relativi dati amministrativi non vengono raccolti da questi moduli.</p>
+
+    <h2>I tuoi diritti</h2>
+    <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione e, quando applicabile, portabilità dei dati; puoi opporti ai trattamenti nei casi previsti e revocare il consenso alla recensione. Per esercitare i diritti usa il recapito del titolare indicato sopra. Potrebbero essere richieste le sole informazioni necessarie a verificare la tua identità e individuare i dati.</p>
+    <p>Puoi presentare reclamo al <a href="https://www.garanteprivacy.it/">Garante per la protezione dei dati personali</a> o all’autorità di controllo competente. Non vengono adottate decisioni automatizzate né effettuata profilazione attraverso questi moduli.</p>
+  </article>
+</Site>

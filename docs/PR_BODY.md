@@ -1,0 +1,9 @@
+Sostituisce il sito Angular con il progetto Astro locale aggiornato, senza account. Mantiene il dominio Firebase, il meta tag Google, la cronologia e i workflow. Le pagine statiche vengono pubblicate da `dist`; entrambi i workflow usano Node.js 24. L’anteprima PR usa il backend demo; master usa Firebase e le variabili Actions dell’app Web esistente.
+
+Aggiunge `/privacy/`, i collegamenti nei moduli e nel footer e il consenso alla pubblicazione delle recensioni. L’informativa usa i dati confermati dal titolare: Daniele Mastrostefano, recapito di Velletri, email indicata e cancellazione manuale di contatti e recensioni entro un mese dall’invio. La regione Firestore `eur3` e l’assenza di backup pianificati sono state verificate tramite API. `PRIVACY_URL=/privacy/` è configurata nelle variabili Actions, insieme a `FIREBASE_API_KEY` dal valore SDK verificato.
+
+Corregge le quattro voci high dell’audit aggiornando soltanto gRPC `1.9.16` → `1.14.7` con override circoscritto a Firestore. Firebase resta `13.3.0`; audit aggiornato: zero vulnerabilità rilevate. Analisi dell’esposizione e limiti in `docs/DEPENDENCIES.md`.
+
+Validazione locale: `npm ci`, controllo completezza informativa, build produzione e demo, 43 controlli delle regole nell’emulatore e test del client Node/gRPC con operazioni effettive. Chromium sulle pagine principali, privacy desktop/mobile, link relativi e modulo Contatti verso produzione (dato di prova rimosso). Home e privacy indicizzabili, sitemap sul dominio esistente. Firestore già pubblicato e verificato.
+
+Il rilascio live segue il merge su master dopo controlli Actions verdi e verifica dell’anteprima PR. I workflow bloccano vulnerabilità npm high e informative incomplete. Dopo il deploy vanno verificati Home, privacy, sitemap e Contatti sul dominio esistente.

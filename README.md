@@ -1,59 +1,87 @@
-# TutorWebsite
+# TutorOnline
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+Sito di Daniele Mastrostefano per le ripetizioni online di matematica, fisica e informatica. Realizzato con Astro 7 e Firebase Firestore, senza registrazione o login utenti.
 
-## Development server
+## Avvio in IntelliJ
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Apri la cartella che contiene `package.json` e usa Node.js 24 (`.nvmrc`).
 
 ```bash
-ng generate component component-name
+npm ci
+npm run dev
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+L'anteprima è normalmente disponibile su `http://localhost:4321/`. Il file locale `.env` è già configurato per Firebase; i moduli salvano dati reali. Il file è escluso da Git. Per configurare una nuova copia del progetto, parti da `.env.example`: la modalità `demo` simula gli invii senza salvare dati.
 
 ```bash
-ng generate --help
+npm run build
+npm run preview
 ```
 
-## Building
+Il build rigenera `dist/` con la versione corrente del sito. `node_modules/`, `.astro/` e `dist/` sono cartelle generate e sono escluse da Git.
 
-To build the project run:
+## Struttura
+
+| File o cartella | Contenuto |
+| --- | --- |
+| `src/components/` | Contenuto delle pagine |
+| `src/layouts/Site.astro` | Intestazione, menu, footer e metadati |
+| `src/styles/site.css` | Stile e layout responsive |
+| `src/lib/site-data.js` | Metadati, tariffe, materie e livelli |
+| `src/lib/site-client.js` | Menu, moduli, stelle e visualizzazione recensioni |
+| `src/lib/firebase-backend.js` | Salvataggio e lettura da Firestore |
+| `src/lib/site-meta.js` | URL canonici e indicizzazione |
+| `public/assets/` | Immagini, font e relative licenze |
+| `firestore.rules` | Regole dei messaggi e delle recensioni |
+| `firestore.indexes.json` | Indice delle recensioni approvate per data |
+| `scripts/check-firestore-rules.mjs` | Verifiche delle regole nell'emulatore |
+
+Le pagine sono `/`, `/info/`, `/prezzi/`, `/contatti/`, `/tutte-recensioni/` e `/recensioni/`. Le tariffe rimandano al modulo Contatti tramite un unico pulsante.
+
+## Firebase
+
+Il progetto associato è `tutor-website-717e5`, indicato anche in `.firebaserc`. Il database è Firestore `(default)`.
+
+- `tutoronlineContacts`: messaggi con nome, email, livello scolastico, telefono facoltativo, testo, eventuali riferimenti a materia e pacchetto, data server. Dal sito è consentito soltanto inviare messaggi validi; i messaggi si consultano nella console Firebase.
+- `tutoronlineReviews`: nome o iniziali facoltativi, voto da 1 a 5, commento fino a 150 caratteri, stato e data server. Le recensioni nascono con `status: pending`. Il sito legge soltanto quelle approvate, mostrando le 30 più recenti, le stelle e la relativa media.
+
+Le collection vengono create automaticamente al primo invio. Le regole mantengono gli invii validati e la lettura delle recensioni Angular (`Contatti`, `recensioni`) durante il passaggio. `users/{uid}` e `tutoronlineProfiles/{uid}` sono privati e accessibili solo al proprietario autenticato. Non esistono permessi generali per utenti autenticati. Le regole effettive sono state lette tramite Firebase Rules API prima della modifica; l’indice in produzione è già READY e viene conservato. Il sito Astro attuale non include login o profili.
+
+### Approvare una recensione
+
+1. Apri [Firestore nella console Firebase](https://console.firebase.google.com/project/tutor-website-717e5/firestore).
+2. Seleziona `tutoronlineReviews` e il documento da controllare.
+3. Cambia il campo stringa `status` da `pending` a `approved` e salva.
+4. Ricarica la pagina Recensioni. Per nascondere una recensione, reimposta `status` a `pending`.
+
+### Verifiche locali
+
+Installa Java 21 o successivo, quindi esegui:
 
 ```bash
-ng build
+npm run test:rules
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Il controllo avvia l'emulatore su `127.0.0.1:8080` e usa soltanto il progetto dimostrativo `demo-tutoronline`, senza scrivere sul database reale. Per provare anche i moduli nell'anteprima, imposta temporaneamente `PUBLIC_BACKEND=emulator` in `.env`, avvia l'emulatore e riavvia il server di sviluppo:
 
 ```bash
-ng test
+npx --yes firebase-tools@15.36.0 emulators:start --only firestore --project demo-tutoronline
 ```
 
-## Running end-to-end tests
+### Pubblicare
 
-For end-to-end (e2e) testing, run:
+Il login CLI autorizza l'account proprietario a distribuire la configurazione; non introduce un login nel sito.
 
 ```bash
-ng e2e
+npx --yes firebase-tools@15.36.0 login
+npx --yes firebase-tools@15.36.0 deploy --only firestore:rules,firestore:indexes --project tutor-website-717e5
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Per pubblicare anche il sito, imposta `SITE_URL` in `.env` con il dominio effettivo, poi:
 
-## Additional Resources
+```bash
+npm run build
+npx --yes firebase-tools@15.36.0 deploy --only hosting --project tutor-website-717e5
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`SITE_URL` attiva URL canonici, sitemap e indicizzazione nella modalità Firebase. La configurazione pubblica Firebase richiede `PUBLIC_FIREBASE_API_KEY`, `PUBLIC_FIREBASE_PROJECT_ID` e `PUBLIC_FIREBASE_APP_ID`. `PUBLIC_FIREBASE_APP_CHECK_KEY` è facoltativo e abilita App Check con reCAPTCHA Enterprise quando configurato sul progetto.
