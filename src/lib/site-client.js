@@ -24,8 +24,8 @@ document.addEventListener("keydown", event => {
 });
 window.addEventListener("pageshow", closeMenu);
 
-// Feedback delegato anche alle recensioni caricate dopo l'avvio della pagina.
-const touchFeedbackSelector = ".button, .menu-toggle, .text-link, .site-nav a, .stars label, .plan, .review-card";
+// Feedback dei controlli, senza alterare le azioni native.
+const touchFeedbackSelector = ".button, .menu-toggle, .text-link, .site-nav a, .stars label";
 let touchFeedback;
 let touchPointer;
 let touchFeedbackTimer;
@@ -55,9 +55,7 @@ document.addEventListener("pointermove", event => {
 document.addEventListener("pointerup", event => {
   if (event.pointerId !== touchPointer?.id) return;
   touchPointer = undefined;
-  // Il riflesso dei riquadri ha il tempo di completarsi anche dopo un tap veloce.
-  const duration = touchFeedback.matches(".plan, .review-card") ? 750 : 200;
-  touchFeedbackTimer = setTimeout(clearTouchFeedback, duration);
+  touchFeedbackTimer = setTimeout(clearTouchFeedback, 200);
 }, { passive: true });
 
 document.addEventListener("pointercancel", event => {
@@ -68,29 +66,56 @@ window.addEventListener("blur", clearTouchFeedback);
 window.addEventListener("pagehide", clearTouchFeedback);
 window.addEventListener("pageshow", clearTouchFeedback);
 
-// Sui dispositivi touch evidenzia i riquadri durante la lettura, anche senza tap.
-const viewportFeedbackMedia = window.matchMedia("(hover: none), (pointer: coarse)");
-const viewportCardSelector = ".plan, .review-card";
-let viewportFeedbackObserver;
+// Durante lo scroll nativo i Pointer Events possono essere annullati:
+// i Touch Events mantengono la posizione del dito fino al suo sollevamento.
+let cardTouch;
+let touchedCard;
+let cardTouchFrame;
 
-function configureViewportFeedback() {
-  viewportFeedbackObserver?.disconnect();
-  viewportFeedbackObserver = undefined;
-  const cards = document.querySelectorAll(viewportCardSelector);
-  cards.forEach(card => card.classList.remove("is-in-view"));
-  if (!viewportFeedbackMedia.matches || !("IntersectionObserver" in window)) return;
-  viewportFeedbackObserver = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      // Soglie distinte evitano oscillazioni mentre il riquadro sfiora il bordo.
-      if (!entry.isIntersecting) entry.target.classList.remove("is-in-view");
-      else if (entry.intersectionRatio >= .15) entry.target.classList.add("is-in-view");
-    }
-  }, { threshold: [0, .15], rootMargin: "0px 0px -5% 0px" });
-  cards.forEach(card => viewportFeedbackObserver.observe(card));
+function updateTouchedCard() {
+  cardTouchFrame = undefined;
+  const next = cardTouch
+    ? document.elementFromPoint(cardTouch.x, cardTouch.y)?.closest(".plan, .review-card")
+    : null;
+  if (next === touchedCard) return;
+  touchedCard?.classList.remove("is-under-touch");
+  touchedCard = next;
+  touchedCard?.classList.add("is-under-touch");
 }
 
-configureViewportFeedback();
-viewportFeedbackMedia.addEventListener("change", configureViewportFeedback);
+function clearCardTouch() {
+  cardTouch = undefined;
+  cancelAnimationFrame(cardTouchFrame);
+  updateTouchedCard();
+}
+
+function scheduleCardTouch() {
+  if (cardTouch && !cardTouchFrame) cardTouchFrame = requestAnimationFrame(updateTouchedCard);
+}
+
+document.addEventListener("touchstart", event => {
+  if (event.touches.length !== 1) return clearCardTouch();
+  const touch = event.touches[0];
+  cardTouch = { id: touch.identifier, x: touch.clientX, y: touch.clientY };
+  updateTouchedCard();
+}, { passive: true });
+document.addEventListener("touchmove", event => {
+  if (!cardTouch) return;
+  if (event.touches.length !== 1) return clearCardTouch();
+  const touch = Array.from(event.touches).find(touch => touch.identifier === cardTouch.id);
+  if (!touch) return clearCardTouch();
+  cardTouch.x = touch.clientX;
+  cardTouch.y = touch.clientY;
+  scheduleCardTouch();
+}, { passive: true });
+document.addEventListener("touchend", clearCardTouch, { passive: true });
+document.addEventListener("touchcancel", clearCardTouch, { passive: true });
+// Anche se il dito resta fermo, il contenuto può scorrere sotto di esso.
+// Nessun effetto durante lo scorrimento inerziale dopo il rilascio.
+document.addEventListener("scroll", scheduleCardTouch, { passive: true, capture: true });
+window.addEventListener("blur", clearCardTouch);
+window.addEventListener("pagehide", clearCardTouch);
+window.addEventListener("pageshow", clearCardTouch);
 
 class FormError extends Error {}
 
@@ -268,7 +293,6 @@ async function showReviews() {
       figure.append(comment, author);
       item.append(header, figure);
       list.append(item);
-      viewportFeedbackObserver?.observe(item);
     }
     if (rows.length) {
       const average = rows.reduce((sum, row) => sum + row.rating, 0) / rows.length;
