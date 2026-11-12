@@ -27,3 +27,9 @@ Il proprietario ha confermato il rilascio **senza account**. GitHub CLI è auten
 Le quattro voci high del primo audit sono risolte: vedere `docs/DEPENDENCIES.md`. Il sorgente originale resta intatto; le modifiche sono nel clone di rilascio.
 
 Non è stato effettuato alcun deploy Hosting diretto. La Home pubblica attuale risponde HTTP 200 con titolo `Tutor Online` (versione precedente).
+
+## Aggiornamento locale: notifiche Apps Script
+
+Predisposta la soluzione autonoma in `apps-script-notifications/`, in sostituzione del piano Cloud Functions. Schema verificato sul clone GitHub del branch `master`, commit `0aafe5534bf6a7ab62bf2f185029c75b08abbb0c`: raccolte `tutoronlineContacts` e `tutoronlineReviews`, campo `createdAt` server. Il polling di sola lettura e MailApp non richiedono modifiche ai moduli, alle regole, agli indici o alla configurazione Hosting. Il progetto resta compatibile con Spark entro le quote gratuite.
+
+Il comando `npm run test:notifications` è incluso nei workflow PR e live. README principale e guida dello script spiegano installazione e collaudo. I file sono predisposti localmente: non sono stati installati trigger, autorizzati account Apps Script o inviati avvisi. L'attivazione richiede di configurare il Gmail, copiare codice e manifest su script.google.com, verificare l'accesso con `verificaAccessoFirestore` e poi eseguire `attivaNotifiche`. Un deploy del sito non installa né aggiorna lo script autonomo.

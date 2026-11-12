@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test:notifications": "node --test apps-script-notifications/notifications.test.cjs",
     "test:rules": "npx --yes firebase-tools@15.36.0 emulators:exec --only firestore --project demo-tutoronline \"node scripts/check-firestore-rules.mjs && node scripts/check-grpc-compat.mjs\"",
     "check:release": "node scripts/check-privacy.mjs"
   },

@@ -35,6 +35,7 @@ Il build rigenera `dist/` con la versione corrente del sito. `node_modules/`, `.
 | `firestore.rules` | Regole dei messaggi e delle recensioni |
 | `firestore.indexes.json` | Indice delle recensioni approvate per data |
 | `scripts/check-firestore-rules.mjs` | Verifiche delle regole nell'emulatore |
+| `apps-script-notifications/` | Script autonomo, manifest, guida e test delle notifiche email |
 
 Le pagine sono `/`, `/info/`, `/prezzi/`, `/contatti/`, `/tutte-recensioni/` e `/recensioni/`. Le tariffe rimandano al modulo Contatti tramite un unico pulsante.
 
@@ -51,8 +52,24 @@ Le collection vengono create automaticamente al primo invio. Le regole mantengon
 
 1. Apri [Firestore nella console Firebase](https://console.firebase.google.com/project/tutor-website-717e5/firestore).
 2. Seleziona `tutoronlineReviews` e il documento da controllare.
-3. Cambia il campo stringa `status` da `pending` a `approved` e salva.
+3. Cambia soltanto il campo stringa `status` da `pending` a `approved` e salva, lasciando invariato `createdAt`.
 4. Ricarica la pagina Recensioni. Per nascondere una recensione, reimposta `status` a `pending`.
+
+### Notifiche email con Google Apps Script
+
+La soluzione predisposta in [`apps-script-notifications/`](apps-script-notifications/README.md) usa uno script autonomo per controllare ogni 10 minuti `tutoronlineContacts` e `tutoronlineReviews` tramite Firestore REST e OAuth dell'account Google che lo autorizza. Legge soltanto ID e `createdAt` e invia con MailApp un riepilogo dei nuovi documenti al Gmail configurato. Le recensioni vengono segnalate già in attesa di approvazione; il successivo cambio di `status` non genera altri avvisi.
+
+Non richiede Cloud Functions o il passaggio a Blaze: il progetto può restare su Spark entro le quote gratuite. Stato iniziale senza invii retroattivi, cursori separati data+ID, lock e ripresa dopo errori sono gestiti dallo script. Le quote email e i possibili duplicati in caso di interruzione dopo l'invio sono descritti nella guida.
+
+Per attivarlo, copia `Code.gs` e `appsscript.json` in un nuovo progetto su script.google.com, imposta il Gmail destinatario, esegui prima `verificaAccessoFirestore` e poi `attivaNotifiche`. La [guida completa](apps-script-notifications/README.md) contiene autorizzazione IAM/OAuth, collaudo e rimozione dei dati fittizi. La presenza dei file nel repository o un deploy Hosting non attiva lo script.
+
+I test locali usano servizi simulati, non inviano email e non accedono a Firestore:
+
+```bash
+npm run test:notifications
+```
+
+Entrambi i workflow GitHub eseguono questi test prima della build. Il sito non importa lo script e Firebase Hosting pubblica soltanto `dist/`.
 
 ### Verifiche locali
 
