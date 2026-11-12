@@ -18,6 +18,7 @@ jobs:
       - run: npm ci
       - run: npm audit --audit-level=high
       - run: npm run check:release
+      - run: npm run test:notifications
       - name: Validate production configuration
         env:
           FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
