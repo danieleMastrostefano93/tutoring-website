@@ -699,22 +699,22 @@ button.text-link { background: transparent; border: 0; padding: 0; }
 .privacy-consent { display: flex; gap: .75rem; align-items: flex-start; font-size: .9rem; line-height: 1.6; }
 .privacy-consent input { margin-top: .4rem; flex-shrink: 0; }
 
-/* Su touch gli stessi effetti accompagnano la pressione, senza bloccare lo scroll. */
-.plan:is(:active, :focus-within, .is-touch-active) {
+/* Su touch gli effetti accompagnano il tap e la lettura dei riquadri visibili. */
+.plan:is(:active, :focus-within, .is-touch-active, .is-in-view) {
   background: var(--green-tint);
   border-color: #80927b;
   box-shadow: 0 12px 28px rgb(49 75 56 / .1);
   transform: translateY(-4px);
 }
-.plan:is(:active, :focus-within, .is-touch-active)::before { transform: translateX(110%); }
-.review-card:is(:active, :focus-within, .is-touch-active) {
+.plan:is(:active, :focus-within, .is-touch-active, .is-in-view)::before { transform: translateX(110%); }
+.review-card:is(:active, :focus-within, .is-touch-active, .is-in-view) {
   background: var(--green-tint);
   transform: translateY(-5px);
   border-color: #9ba88f;
   box-shadow: 0 14px 30px rgb(49 75 56 / .1);
 }
 @media (prefers-reduced-motion: reduce) {
-  .plan:is(:hover, :active, :focus-within, .is-touch-active),
-  .review-card:is(:hover, :active, :focus-within, .is-touch-active) { transform: none; }
+  .plan:is(:hover, :active, :focus-within, .is-touch-active, .is-in-view),
+  .review-card:is(:hover, :active, :focus-within, .is-touch-active, .is-in-view) { transform: none; }
   .plan::before { display: none; }
 }

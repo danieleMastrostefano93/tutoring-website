@@ -68,6 +68,30 @@ window.addEventListener("blur", clearTouchFeedback);
 window.addEventListener("pagehide", clearTouchFeedback);
 window.addEventListener("pageshow", clearTouchFeedback);
 
+// Sui dispositivi touch evidenzia i riquadri durante la lettura, anche senza tap.
+const viewportFeedbackMedia = window.matchMedia("(hover: none), (pointer: coarse)");
+const viewportCardSelector = ".plan, .review-card";
+let viewportFeedbackObserver;
+
+function configureViewportFeedback() {
+  viewportFeedbackObserver?.disconnect();
+  viewportFeedbackObserver = undefined;
+  const cards = document.querySelectorAll(viewportCardSelector);
+  cards.forEach(card => card.classList.remove("is-in-view"));
+  if (!viewportFeedbackMedia.matches || !("IntersectionObserver" in window)) return;
+  viewportFeedbackObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      // Soglie distinte evitano oscillazioni mentre il riquadro sfiora il bordo.
+      if (!entry.isIntersecting) entry.target.classList.remove("is-in-view");
+      else if (entry.intersectionRatio >= .15) entry.target.classList.add("is-in-view");
+    }
+  }, { threshold: [0, .15], rootMargin: "0px 0px -5% 0px" });
+  cards.forEach(card => viewportFeedbackObserver.observe(card));
+}
+
+configureViewportFeedback();
+viewportFeedbackMedia.addEventListener("change", configureViewportFeedback);
+
 class FormError extends Error {}
 
 function formText(data, name) {
@@ -244,6 +268,7 @@ async function showReviews() {
       figure.append(comment, author);
       item.append(header, figure);
       list.append(item);
+      viewportFeedbackObserver?.observe(item);
     }
     if (rows.length) {
       const average = rows.reduce((sum, row) => sum + row.rating, 0) / rows.length;
