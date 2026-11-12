@@ -1,12 +1,12 @@
 {
   "controllerName": "Daniele Mastrostefano",
   "controllerConfirmed": true,
-  "controllerAddress": "",
+  "controllerAddress": "00049 Velletri (RM), Italia",
   "contactEmail": "d4n1m45tr0@gmail.com",
-  "contactRetention": "Un mese dall’invio, comprese le relative risposte conservate dal titolare",
-  "pendingReviewRetention": "Un mese dall’invio",
-  "publishedReviewRetention": "Un mese dall’invio, anche dopo l’approvazione",
+  "contactRetention": "Al massimo un mese dall’invio, con cancellazione manuale da parte del titolare anche prima se non più necessari; lo stesso criterio si applica alle relative risposte",
+  "pendingReviewRetention": "Al massimo un mese dall’invio, con cancellazione manuale da parte del titolare",
+  "publishedReviewRetention": "Al massimo un mese dall’invio, anche dopo l’approvazione, con rimozione e cancellazione manuale da parte del titolare",
   "technicalRetention": "Firebase Hosting conserva gli indirizzi IP per alcuni mesi, secondo la documentazione del fornitore. Non risultano backup Firestore o pianificazioni di backup configurati; il ripristino point-in-time è disattivato. La finestra tecnica di versionamento Firestore rilevata è di un’ora",
   "providerDetails": "Il database Firestore è nella localizzazione europea multi-regione eur3, con repliche dati in Belgio e Paesi Bassi e una replica di controllo in Finlandia. Firebase Hosting distribuisce i contenuti tramite infrastruttura globale. Per eventuali trattamenti fuori dallo Spazio economico europeo si applicano le garanzie previste dalle condizioni Google, comprese le clausole contrattuali standard quando applicabili. Il titolare non utilizza altri servizi per gestire i dati di questi moduli",
-  "detailsConfirmed": false
+  "detailsConfirmed": true
 }
