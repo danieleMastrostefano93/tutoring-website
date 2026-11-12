@@ -10,7 +10,7 @@ const pending = "Da completare prima della pubblicazione";
     {!privacyComplete && <p class="privacy-draft" role="note"><strong>Bozza per revisione.</strong> I dati del titolare, i recapiti e i tempi di conservazione devono essere confermati prima del rilascio pubblico.</p>}
 
     <h2>Chi tratta i dati</h2>
-    <p>Il titolare del trattamento è {policy.controllerName}{!policy.controllerConfirmed && " (da confermare)"}. Indirizzo: {policy.controllerAddress || pending}.</p>
+    <p>Il titolare del trattamento è {policy.controllerName}{!policy.controllerConfirmed && " (da confermare)"}, {policy.controllerAddress || pending}.</p>
     <p>Per le richieste relative ai tuoi dati: {policy.contactEmail ? <a href={`mailto:${policy.contactEmail}`}>{policy.contactEmail}</a> : pending}.</p>
 
     <h2>Richieste di informazioni e lezioni</h2>
