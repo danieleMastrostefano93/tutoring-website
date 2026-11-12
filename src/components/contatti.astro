@@ -1,4 +1,5 @@
 ---
+import { privacyUrl } from "../lib/privacy.js";
 import { levels } from "../lib/site-data.js";
 ---
 <section class="container section form-layout contact-layout">
@@ -28,6 +29,7 @@ import { levels } from "../lib/site-data.js";
     <details class="phone-field"><summary>Aggiungi un telefono <span class="optional">facoltativo</span></summary>
       <label class="field">Numero di telefono<input name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="+39"></label>
     </details>
+    <p class="form-hint">Uso questi dati per rispondere alla tua richiesta e organizzare le lezioni. Il telefono è facoltativo. Leggi l’<a href={privacyUrl}>informativa privacy</a>.</p>
     <div class="form-submit">
       <button class="button" type="submit" disabled>Invia messaggio <span class="icon-arrow" aria-hidden="true"></span></button>
     </div>

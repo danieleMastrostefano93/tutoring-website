@@ -14,20 +14,16 @@ Sorgente: copia del progetto locale `TutorOnline_Progetto`, incluse le modifiche
 - 43 controlli nell’emulatore: validazione contatti e recensioni, compatibilità con i moduli Angular, profili privati e divieto di accesso ad altre raccolte.
 - Deploy eseguito con `npx --yes firebase-tools@15.36.0 deploy --only firestore --project tutor-website-717e5`. Regole pubblicate confrontate con il file locale; indice recensioni esistente conservato e READY.
 
-## Completamento su GitHub
+## Completamento su GitHub e aggiornamento privacy
 
-Non sono disponibili credenziali GitHub nel contesto di esecuzione. Il clone pubblico è riuscito; variabili Actions, push, PR, controlli, anteprima e merge richiedono autenticazione con permessi sul repository.
+Il proprietario ha confermato il rilascio **senza account**. GitHub CLI è autenticata come `danieleMastrostefano93`. Le variabili Actions `FIREBASE_API_KEY` (dal valore SDK verificato) e `PRIVACY_URL=/privacy/` sono state impostate. Il secret Firebase del workflow è presente.
 
-1. Autenticare GitHub CLI con `gh auth login` e configurare Git con `gh auth setup-git`.
-2. Impostare `FIREBASE_API_KEY` nelle variabili Actions usando `apiKey` della configurazione SDK dell’app Web `1:870834974460:web:bce395908569695b33b179` (verificata tramite Firebase Management API). Conservare `PRIVACY_URL` se già esiste; altrimenti chiedere l’URL al proprietario. Nel progetto corrente non è presente un URL privacy.
-3. Eseguire `git push -u origin nuovo-sito-astro`.
-4. Aprire la PR con base **master**: `gh pr create --base master --head nuovo-sito-astro --title "Sostituisci il sito Angular con Astro" --body-file docs/PR_BODY.md`.
-5. Verificare i controlli GitHub Actions e aprire l’anteprima Firebase generata dalla PR. La build PR usa `PUBLIC_BACKEND=demo` e non salva dati reali.
-6. Risolvere il requisito account: il progetto sorgente è esplicitamente senza login. Concordare questa versione o implementare il login prima del merge se ancora richiesto.
-7. Con controlli verdi e anteprima verificata, fare merge su `master` e attendere il workflow Hosting live. Verificare nuovamente Home, sitemap, Contatti e l’eventuale login.
+1. Impostare la variabile Actions `FIREBASE_API_KEY` con `apiKey` della configurazione SDK dell’app Web esistente (già verificata tramite Firebase Management API) e `PRIVACY_URL=/privacy/`.
+2. Fare push di `nuovo-sito-astro` e aprire la PR con base **master** usando `docs/PR_BODY.md`.
+3. Controllare Actions e l’anteprima Firebase della PR (backend demo).
+4. Completare `src/lib/privacy-policy.json` con i dati confermati dal titolare. Il titolare ha confermato nome, email e conservazione di un mese per contatti e recensioni. Restano l’indirizzo da pubblicare e la conferma della gestione della cancellazione. Le API confermano regione `eur3`, nessun backup o pianificazione, PITR disattivato e finestra di versionamento di un’ora. Il workflow live esegue `npm run check:release` e fallisce finché questi dati non sono completi. La bozza privacy è comunque inclusa nella build e nell’anteprima, con `noindex`; una volta completa entrerà nella sitemap automaticamente.
+5. Con informativa completa e controlli verdi, verificare ancora anteprima e poi fare merge. Attendere il workflow Hosting e verificare Home, `/privacy/`, `/sitemap.xml` e invio Contatti sul dominio esistente.
+
+Le quattro voci high del primo audit sono risolte: vedere `docs/DEPENDENCIES.md`. Il sorgente originale resta intatto; le modifiche sono nel clone di rilascio.
 
 Non è stato effettuato alcun deploy Hosting diretto. La Home pubblica attuale risponde HTTP 200 con titolo `Tutor Online` (versione precedente).
-
-## Dipendenze
-
-`npm audit` segnala quattro voci high nella catena Firebase → Firestore → gRPC. Il report propone un downgrade major di Firebase; non è stato applicato automaticamente per non cambiare il progetto sorgente. Il client del sito importa Firestore Lite; le segnalazioni gRPC riguardano dipendenze per Node. Il risultato dell’audit non equivale a una verifica di sicurezza completa.

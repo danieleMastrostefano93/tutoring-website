@@ -11,10 +11,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test:rules": "npx --yes firebase-tools@15.36.0 emulators:exec --only firestore --project demo-tutoronline \"node scripts/check-firestore-rules.mjs\""
+    "test:rules": "npx --yes firebase-tools@15.36.0 emulators:exec --only firestore --project demo-tutoronline \"node scripts/check-firestore-rules.mjs && node scripts/check-grpc-compat.mjs\"",
+    "check:release": "node scripts/check-privacy.mjs"
   },
   "dependencies": {
     "astro": "7.4.11",
     "firebase": "13.3.0"
+  },
+  "overrides": {
+    "@firebase/firestore": {
+      "@grpc/grpc-js": "1.14.7"
+    }
   }
 }

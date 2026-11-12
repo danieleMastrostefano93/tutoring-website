@@ -1,3 +1,6 @@
+---
+import { privacyUrl } from "../lib/privacy.js";
+---
 <section class="container section form-layout review-form-layout">
   <div class="form-intro">
     <a href="/tutte-recensioni/" class="text-link back-link"><span class="icon-arrow icon-arrow-back" aria-hidden="true"></span> Tutte le recensioni</a>
@@ -22,6 +25,7 @@
     </label>
     <p class="form-hint text-right" id="review-length">0 / 150 caratteri</p>
     <label class="field">Nome o iniziali <span class="optional">facoltativo</span><input name="name" type="text" maxlength="80" placeholder="Come vuoi firmarti?"></label>
+    <label class="privacy-consent"><input type="checkbox" name="publicationConsent" required> <span>Acconsento al trattamento e alla pubblicazione sul sito della recensione e del nome o delle iniziali che scelgo di indicare, dopo la moderazione. Posso revocare il consenso come descritto nell’<a href={privacyUrl}>informativa privacy</a>.</span></label>
     <div class="actions"><button type="submit" class="button" disabled>Invia recensione <span class="icon-arrow" aria-hidden="true"></span></button></div>
     <p class="form-result" role="status" hidden></p>
   </form>

@@ -2,6 +2,7 @@
 import { mainNavigation, pages } from "../lib/site-data.js";
 import { isIndexable, siteOrigin } from "../lib/site-meta.js";
 import "../styles/site.css";
+import { privacyUrl } from "../lib/privacy.js";
 
 const { page } = Astro.props;
 const meta = pages[page] || {
@@ -56,7 +57,7 @@ const canonical = siteOrigin && meta.path ? new URL(meta.path, siteOrigin).href 
     </main>
     <footer class="site-footer">
       <div class="container footer-content">
-        <div><a class="footer-name" href="/">TutorOnline</a><p>Lezioni online con Daniele Mastrostefano</p></div>
+        <div><a class="footer-name" href="/">TutorOnline</a><p>Lezioni online con Daniele Mastrostefano</p><a href={privacyUrl}>Privacy</a></div>
         <p class="footer-copyright">Sito web realizzato e gestito da me - Tutti i diritti sono riservati all'autore © 2026</p>
       </div>
     </footer>

@@ -1,3 +1,5 @@
+import { privacyComplete } from "./privacy.js";
+
 export const pages = {
   home: {
     path: "/",
@@ -28,6 +30,13 @@ export const pages = {
     label: "Recensioni",
     title: "Recensioni delle lezioni",
     description: "Leggi le esperienze degli studenti di TutorOnline."
+  },
+  privacy: {
+    path: "/privacy/",
+    label: "Privacy",
+    title: "Informativa sul trattamento dei dati personali",
+    description: "Come TutorOnline tratta i dati dei contatti e delle recensioni.",
+    noIndex: !privacyComplete
   },
   recensioni: {
     path: "/recensioni/",
